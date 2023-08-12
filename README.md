@@ -4,7 +4,7 @@
 
 # 🪐 👀 Jupyter Viewer
 
-> A revisited NbViewer as modern Web application to view Jupyter notebooks.
+> A revisited NbViewer as a modern Web application to view Jupyter notebooks.
 
 [NbViwer](https://nbviewer.org) is built on top of the [GitHub nbviewer repository](https://github.com/jupyter/nbviewer) and has been an attraction point for many data scientists since years.
 

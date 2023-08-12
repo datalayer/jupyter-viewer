@@ -6,9 +6,9 @@
 
 > A revisited NbViewer as a modern Web application to view Jupyter notebooks.
 
-[NbViwer](https://nbviewer.org) is built on top of the [GitHub nbviewer repository](https://github.com/jupyter/nbviewer) and has been an attraction point for many data scientists since years.
+[NbViewer](https://nbviewer.org) is built on top of the [GitHub nbviewer repository](https://github.com/jupyter/nbviewer) and has been an attraction point for many data scientists since years.
 
-Datalayer Jupyter Viewer takes over the concept of easy visualisation and brings it to the Web appliation developers with React.js components.
+Datalayer Jupyter Viewer takes over the concept of easy visualisation and brings it to the Web application developers with React.js components.
 
 This repository packages the [Jupyter UI Viewer](https://jupyter-ui.datalayer.tech/docs/components/viewer) component as a Jupyter Server extension. Install and launch with the following commands (you will need Python installed on your machine).
 

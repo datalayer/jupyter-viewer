@@ -1,0 +1,9 @@
+# Copyright (c) Datalayer, Inc. https://datalayer.io
+# Distributed under the terms of the MIT License.
+
+name: datalayer
+channels:
+  - conda-forge
+  - defaults
+dependencies:
+  - yarn=3.5.0

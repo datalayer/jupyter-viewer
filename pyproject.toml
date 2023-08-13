@@ -38,7 +38,7 @@ test = [
 ]
 
 [project.scripts]
-jupyter-viewer = "jupyter_viewer.application:main"
+jupyter-viewer = "jupyter_viewer.serverapplication:main"
 
 [tool.hatch.version]
 source = "nodejs"

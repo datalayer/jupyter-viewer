@@ -15,7 +15,8 @@ This repository packages the [Jupyter UI Viewer](https://jupyter-ui.datalayer.te
 ```bash
 pip install jupyter_viewer
 # open http://localhost:8888/jupyter_viewer
-python -m jupyter_viewer
+# python -m jupyter_viewer
+jupyter viewer
 ```
 
 After launching, enjoy the 👀 views.

@@ -2,17 +2,14 @@ import { JupyterFrontEnd, JupyterFrontEndPlugin } from '@jupyterlab/application'
 import { ISettingRegistry } from '@jupyterlab/settingregistry';
 import { MainAreaWidget, ICommandPalette } from '@jupyterlab/apputils';
 import { ILauncher } from '@jupyterlab/launcher';
-import { LabIcon } from '@jupyterlab/ui-components';
+import icon from '@datalayer/icons-react/data2/EyesIconLabIcon';
 import { requestAPI } from './handler';
-import { CounterWidget } from './widget';
-import { connect } from './ws';
-
-import IconSvg from '../style/svg/icon.svg';
+import { JupyterViewerWidget } from './widget';
 
 import '../style/index.css';
 
 /**
- * The command IDs used by the jupyter-viewer plugin.
+ * The command IDs used by the plugin.
  */
 namespace CommandIDs {
   export const create = 'create-jupyter-viewer-widget';
@@ -30,23 +27,19 @@ const plugin: JupyterFrontEndPlugin<void> = {
     app: JupyterFrontEnd,
     palette: ICommandPalette,
     settingRegistry: ISettingRegistry | null,
-    launcher: ILauncher | null
+    launcher: ILauncher
   ) => {
     const { commands } = app;
     const command = CommandIDs.create;
-    const IconIcon = new LabIcon({
-      name: 'jupyter-viewer:icon',
-      svgstr: IconSvg,
-    });
     commands.addCommand(command, {
       caption: 'Show Jupyter Viewer',
       label: 'Jupyter Viewer',
-      icon: (args: any) => IconIcon,
+      icon,
       execute: () => {
-        const content = new CounterWidget();
-        const widget = new MainAreaWidget<CounterWidget>({ content });
+        const content = new JupyterViewerWidget(app);
+        const widget = new MainAreaWidget<JupyterViewerWidget>({ content });
         widget.title.label = 'Jupyter Viewer';
-        widget.title.icon = IconIcon;
+        widget.title.icon = icon;
         app.shell.add(widget, 'main');
       }
     });
@@ -56,7 +49,7 @@ const plugin: JupyterFrontEndPlugin<void> = {
       launcher.add({
         command,
         category,
-        rank: 2
+        rank: 2,
       });
     }
     console.log('JupyterLab extension @datalayer/jupyter-viewer is activated!');
@@ -70,7 +63,6 @@ const plugin: JupyterFrontEndPlugin<void> = {
           console.error('Failed to load settings for @datalayer/jupyter-viewer.', reason);
         });
     }
-    connect('ws://localhost:8686/api/jupyter/jupyter_viewer/echo', true);
     requestAPI<any>('get_config')
       .then(data => {
         console.log(data);

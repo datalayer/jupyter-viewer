@@ -1,6 +1,6 @@
 import { JupyterFrontEnd } from '@jupyterlab/application';
 import { ReactWidget } from '@jupyterlab/apputils';
-import Landing from './components/Landing';
+import JupyterViewer from './JupyterViewer';
 
 export class JupyterViewerWidget extends ReactWidget {
   private _app: JupyterFrontEnd;
@@ -11,6 +11,6 @@ export class JupyterViewerWidget extends ReactWidget {
   }
 
   render(): JSX.Element {
-    return <Landing app={this._app} />;
+    return <JupyterViewer app={this._app} />;
   }
 }

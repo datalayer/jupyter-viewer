@@ -1,8 +1,8 @@
 import { createRoot } from 'react-dom/client';
-import Landing from './components/Landing';
+import JupyterViewer from './JupyterViewer';
 
 const div = document.createElement('div');
 document.body.appendChild(div);
 const root = createRoot(div)
 
-root.render(<Landing/>);
+root.render(<JupyterViewer/>);

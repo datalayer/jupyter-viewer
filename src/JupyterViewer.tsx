@@ -1,53 +1,59 @@
 import { useState, useEffect } from 'react';
-import { INotebookContent } from '@jupyterlab/nbformat';
-import { Box, ActionMenu, ActionList } from '@primer/react';
-import { NetworkIcon, JupyterBaseIcon, JupiterIcon, ScientistIcon } from '@datalayer/icons-react';
-import { Jupyter } from '@datalayer/jupyter-react/lib/jupyter/Jupyter';
-import { Viewer } from '@datalayer/jupyter-react/lib/components/viewer/Viewer';
-import { visualisations, astronomies, dataSciences, MenuLine, NotebookExample } from './Menu';
+import { JupyterFrontEnd } from '@jupyterlab/application';
+import { ThemeProvider, BaseStyles, Box } from '@primer/react';
+import { UnderlineNav } from '@primer/react/drafts';
+import { EyesIcon } from '@datalayer/icons-react';
+import FormTab from './tabs/FormTab';
+import ExamplesTab from './tabs/ExamplesTab';
+import AboutTab from './tabs/AboutTab';
+import { requestAPI } from './handler';
 
-const JupyterViewer = () => {
-  const [notebookExample, setNotebookExample] = useState<NotebookExample>(visualisations[0]);
-  const [nbformat, setNbformat] = useState<INotebookContent>();
+export type JupyterFrontEndProps = {
+  app?: JupyterFrontEnd;
+}
+
+const JupyterViewer = (props: JupyterFrontEndProps) => {
+  const [tab, setTab] = useState(1);
+  const [version, setVersion] = useState('');
   useEffect(() => {
-    fetch(notebookExample.url)
-      .then(response => {
-        return response.text();
-      })
-      .then(nb => {
-        const nbformat = nb.replaceAll('\\n', '');
-        setNbformat(JSON.parse(nbformat));
-      });
-  }, [notebookExample]);
+    requestAPI<any>('get_config')
+    .then(data => {
+      setVersion(data.version);
+    })
+    .catch(reason => {
+      console.error(
+        `The Jupyter Server jupyter_viewer extension appears to be missing.\n${reason}`
+      );
+    });
+  });
   return (
     <>
-      <Box m={3}>
-        <Jupyter startDefaultKernel={false} loadJupyterCss={false}>
-          <ActionMenu>
-            <ActionMenu.Button leadingVisual={() => <JupyterBaseIcon colored/>}>
-              Jupyter Viewer
-            </ActionMenu.Button>
-            <ActionMenu.Overlay>
-              <ActionList showDividers>
-                <ActionList.Group title="Visualisations">
-                  {visualisations.map(visualisation => 
-                    <MenuLine notebookExample={visualisation} icon={<NetworkIcon colored/>} setNotebookExample={setNotebookExample} />)}
-                </ActionList.Group>                <ActionList.Group title="Data Science">
-                  {dataSciences.map(dataScience => 
-                    <MenuLine notebookExample={dataScience} icon={<ScientistIcon colored/>} setNotebookExample={setNotebookExample} />)}
-                </ActionList.Group>
-                <ActionList.Group title="Astronomy">
-                  {astronomies.map(astronomy => 
-                    <MenuLine notebookExample={astronomy} icon={<JupiterIcon colored/>} setNotebookExample={setNotebookExample} />)}
-                </ActionList.Group>
-              </ActionList>
-            </ActionMenu.Overlay>
-          </ActionMenu>
-          { nbformat && <Viewer nbformat={nbformat} outputs={true} /> }
-        </Jupyter>
-      </Box>
+      <ThemeProvider>
+        <BaseStyles>
+          <Box>
+            <Box>
+              <UnderlineNav>
+              <UnderlineNav.Item aria-current="page" onSelect={e => {e.preventDefault(); setTab(1);}}>
+                  Viewer
+                </UnderlineNav.Item>
+                <UnderlineNav.Item onSelect={e => {e.preventDefault(); setTab(2);}}>
+                  Examples
+                </UnderlineNav.Item>
+                <UnderlineNav.Item icon={() => <EyesIcon colored/>} onSelect={e => {e.preventDefault(); setTab(3);}}>
+                  About
+                </UnderlineNav.Item>
+              </UnderlineNav>
+            </Box>
+            <Box m={3}>
+              {tab === 1 && <FormTab />}
+              {tab === 2 && <ExamplesTab />}
+              {tab === 3 && <AboutTab version={version} />}
+            </Box>
+          </Box>
+        </BaseStyles>
+      </ThemeProvider>
     </>
-  )
+  );
 }
 
 export default JupyterViewer;

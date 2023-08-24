@@ -16,7 +16,7 @@ const JupyterViewer = (props: JupyterFrontEndProps) => {
   const [tab, setTab] = useState(1);
   const [version, setVersion] = useState('');
   useEffect(() => {
-    requestAPI<any>('get_config')
+    requestAPI<any>('config')
     .then(data => {
       setVersion(data.version);
     })

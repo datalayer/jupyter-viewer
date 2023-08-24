@@ -44,7 +44,7 @@ class JupyterViewerExtensionApp(ExtensionAppJinjaMixin, ExtensionApp):
         self.log.debug("Jupyter Viewer Config {}".format(self.settings['jupyter_viewer_jinja2_env']))
         handlers = [
             ("jupyter_viewer", IndexHandler),
-            (url_path_join("jupyter_viewer", "get_config"), ConfigHandler),
+            (url_path_join("jupyter_viewer", "config"), ConfigHandler),
         ]
         self.handlers.extend(handlers)
 

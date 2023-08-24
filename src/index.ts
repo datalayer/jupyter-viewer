@@ -63,7 +63,7 @@ const plugin: JupyterFrontEndPlugin<void> = {
           console.error('Failed to load settings for @datalayer/jupyter-viewer.', reason);
         });
     }
-    requestAPI<any>('get_config')
+    requestAPI<any>('config')
       .then(data => {
         console.log(data);
       })

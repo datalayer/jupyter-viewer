@@ -35,13 +35,13 @@ class JupyterViewerExtensionApp(ExtensionAppJinjaMixin, ExtensionApp):
     config_c = Unicode("", config=True, help="Config C example.")
 
     def initialize_settings(self):
-        self.log.info("Jupyter Viewer Config {}".format(self.config))
+        self.log.debug("Jupyter Viewer Config {}".format(self.config))
 
     def initialize_templates(self):
         self.serverapp.jinja_template_vars.update({"jupyter_viewer_version" : __version__})
 
     def initialize_handlers(self):
-        self.log.info("Jupyter Viewer Config {}".format(self.settings['jupyter_viewer_jinja2_env']))
+        self.log.debug("Jupyter Viewer Config {}".format(self.settings['jupyter_viewer_jinja2_env']))
         handlers = [
             ("jupyter_viewer", IndexHandler),
             (url_path_join("jupyter_viewer", "get_config"), ConfigHandler),

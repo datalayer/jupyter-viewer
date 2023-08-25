@@ -22,7 +22,7 @@ const JupyterViewer = (props: JupyterFrontEndProps) => {
     })
     .catch(reason => {
       console.error(
-        `Error while accessing the Jupyter Server jupyter_viewer extension.\n${reason}`
+        `Error while accessing the jupyter server jupyter_viewer extension.\n${reason}`
       );
     });
   });

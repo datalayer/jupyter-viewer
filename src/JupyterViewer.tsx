@@ -22,7 +22,7 @@ const JupyterViewer = (props: JupyterFrontEndProps) => {
     })
     .catch(reason => {
       console.error(
-        `The Jupyter Server jupyter_viewer extension appears to be missing.\n${reason}`
+        `Error while accessing the Jupyter Server jupyter_viewer extension..\n${reason}`
       );
     });
   });

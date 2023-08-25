@@ -69,7 +69,7 @@ const plugin: JupyterFrontEndPlugin<void> = {
       })
       .catch(reason => {
         console.error(
-          `The Jupyter Server extension jupyter_viewer appears to be missing.\n${reason}`
+          `Error while accessing the jupyter server jupyter_viewer extension.\n${reason}`
         );
       });
   }

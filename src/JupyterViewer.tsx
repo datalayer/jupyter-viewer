@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { JupyterFrontEnd } from '@jupyterlab/application';
 import { ThemeProvider, BaseStyles, Box } from '@primer/react';
-import { UnderlineNav } from '@primer/react/drafts';
+import { UnderlineNav } from '@primer/react';
 import { EyesIcon } from '@datalayer/icons-react';
 import FormTab from './tabs/FormTab';
 import ExamplesTab from './tabs/ExamplesTab';

@@ -52,7 +52,7 @@ const plugin: JupyterFrontEndPlugin<void> = {
         rank: 5,
       });
     }
-    console.log('JupyterLab extension @datalayer/jupyter-viewer is activated!');
+    console.log('JupyterLab plugin @datalayer/jupyter-viewer is activated!');
     if (settingRegistry) {
       settingRegistry
         .load(plugin.id)

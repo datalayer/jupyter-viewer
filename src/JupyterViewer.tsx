@@ -32,14 +32,14 @@ const JupyterViewer = (props: JupyterFrontEndProps) => {
         <BaseStyles>
           <Box>
             <Box>
-              <UnderlineNav>
-              <UnderlineNav.Item aria-current="page" onSelect={e => {e.preventDefault(); setTab(1);}}>
+              <UnderlineNav aria-label="viewer">
+              <UnderlineNav.Item aria-label="viewer-home" aria-current={tab === 1 ? "page" : undefined} onSelect={e => {e.preventDefault(); setTab(1);}}>
                   Viewer
                 </UnderlineNav.Item>
                 <UnderlineNav.Item onSelect={e => {e.preventDefault(); setTab(2);}}>
                   Examples
                 </UnderlineNav.Item>
-                <UnderlineNav.Item icon={() => <EyesIcon colored/>} onSelect={e => {e.preventDefault(); setTab(3);}}>
+                <UnderlineNav.Item aria-label="viewer-about" aria-current={tab === 2 ? "page" : undefined}  icon={() => <EyesIcon colored/>} onSelect={e => {e.preventDefault(); setTab(3);}}>
                   About
                 </UnderlineNav.Item>
               </UnderlineNav>

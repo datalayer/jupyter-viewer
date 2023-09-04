@@ -32,13 +32,13 @@ const plugin: JupyterFrontEndPlugin<void> = {
     const { commands } = app;
     const command = CommandIDs.create;
     commands.addCommand(command, {
-      caption: 'Show Jupyter Viewer',
-      label: 'Jupyter Viewer',
+      caption: 'Show Viewer',
+      label: 'Viewer',
       icon,
       execute: () => {
         const content = new JupyterViewerWidget(app);
         const widget = new MainAreaWidget<JupyterViewerWidget>({ content });
-        widget.title.label = 'Jupyter Viewer';
+        widget.title.label = 'Viewer';
         widget.title.icon = icon;
         app.shell.add(widget, 'main');
       }

@@ -11,9 +11,9 @@ const AboutTab = (props: Props): JSX.Element => {
   const [pirate, setPirate] = useState(false);
   return (
     <>
-      <Pagehead as="h3">Jupyter Viewer<Label sx={{marginLeft: 1}}>{version}</Label></Pagehead>
+      <Pagehead>🪐 👀 Jupyter Viewer<Label sx={{marginLeft: 1}}>{version}</Label></Pagehead>
       <Box>
-        <Text>🪐 👀 A revisited NbViewer as a modern Web application to view Jupyter notebooks.</Text>
+        <Text>A revisited NbViewer as a modern Web application to view Jupyter notebooks.</Text>
       </Box>
       <Box mt={3}>
         {!pirate ?

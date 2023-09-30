@@ -23,6 +23,7 @@ module.exports = {
     port: 3063,
     client: { overlay: false },
     historyApiFallback: true,
+    hot: !IS_PRODUCTION,
   },
   watchOptions: {
     aggregateTimeout: 300,

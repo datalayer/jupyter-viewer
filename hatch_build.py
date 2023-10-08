@@ -1,3 +1,4 @@
+import glob
 import os
 
 from subprocess import check_call
@@ -19,10 +20,11 @@ def build_javascript():
         ['yarn', 'build:webpack', '--mode=production'],
         cwd=here,
     )
-    shutil.copyfile(
-        './dist/main.jupyter-viewer.js',
-        './jupyter_viewer/static/main.jupyter-viewer.js'
-    )
+    for file in glob.glob(r'./dist/*.js'):
+        shutil.copy(
+            file,
+            './jupyter_viewer/static/'
+        )
 
 
 class JupyterBuildHook(BuildHookInterface):

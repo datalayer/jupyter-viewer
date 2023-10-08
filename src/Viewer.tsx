@@ -1,18 +1,18 @@
 import { useState, useEffect } from 'react';
-import { JupyterFrontEnd } from '@jupyterlab/application';
 import { ThemeProvider, BaseStyles, Box } from '@primer/react';
 import { UnderlineNav } from '@primer/react/drafts';
+import { JupyterLabAppAdapter } from '@datalayer/jupyter-react';
 import { EyesIcon } from '@datalayer/icons-react';
 import FormTab from './tabs/FormTab';
 import ExamplesTab from './tabs/ExamplesTab';
 import AboutTab from './tabs/AboutTab';
-import { requestAPI } from './handler';
+import { requestAPI } from './jupyterlab/handler';
 
-export type JupyterFrontEndProps = {
-  app?: JupyterFrontEnd;
+export type JupyterViewerProps = {
+  adapter?: JupyterLabAppAdapter;
 }
 
-const JupyterViewer = (props: JupyterFrontEndProps) => {
+const JupyterViewer = (props: JupyterViewerProps) => {
   const [tab, setTab] = useState(1);
   const [version, setVersion] = useState('');
   useEffect(() => {

@@ -9,15 +9,14 @@ function shim(regExp) {
   return new webpack.NormalModuleReplacementPlugin(regExp, shimJS);
 }
 
-const JUPYTER_HOST = 'http://localhost:8686';
-
 const IS_PRODUCTION = process.argv.indexOf('--mode=production') > -1;
 const mode = IS_PRODUCTION ? "production" : "development";
 const devtool = IS_PRODUCTION ? false : "inline-cheap-source-map";
 const minimize = IS_PRODUCTION ? true : false;
+const publicPath = IS_PRODUCTION ? "/static/jupyter_viewer/" : "http://localhost:3063/";
 
 module.exports = {
-  entry: "./src/App",
+  entry: "./src/ViewerApp",
   mode: mode,
   devServer: {
     port: 3063,
@@ -36,7 +35,7 @@ module.exports = {
 //    usedExports: true,
   },
   output: {
-    publicPath: "http://localhost:3063/",
+    publicPath,
 //    filename: '[name].[contenthash].jupyter-viewer.js',
     filename: '[name].jupyter-viewer.js',
   },

@@ -1,14 +1,14 @@
 import { ActionList } from '@primer/react';
 
 export type NotebookExample = {
-  title: string,
-  url: string,
+  title: string;
+  url: string;
 }
 
 export const visualisations: NotebookExample[] = [
   {
-    title: "Plotly Presentation",
-    url: "https://raw.githubusercontent.com/jstac/quantecon_nyu_2016/master/lecture9/Plotly_Presentation.ipynb",
+    title: "Plotly Daily Stocks",
+    url: "https://raw.githubusercontent.com/datalayer-examples/notebooks/main/daily-stock.ipynb",
   },
   {
     title: "Matplotlib",

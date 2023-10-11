@@ -33,13 +33,13 @@ const JupyterViewer = (props: JupyterViewerProps) => {
           <Box>
             <Box>
               <UnderlineNav aria-label="viewer">
-              <UnderlineNav.Item aria-label="viewer-home" aria-current={tab === 1 ? "page" : undefined} onSelect={e => {e.preventDefault(); setTab(1);}}>
+                <UnderlineNav.Item aria-label="viewer-home" aria-current={tab === 1 ? "page" : undefined} onSelect={e => {e.preventDefault(); setTab(1);}}>
                   Viewer
                 </UnderlineNav.Item>
-                <UnderlineNav.Item onSelect={e => {e.preventDefault(); setTab(2);}}>
+                <UnderlineNav.Item aria-label="viewer-examples" aria-current={tab === 2 ? "page" : undefined} onSelect={e => {e.preventDefault(); setTab(2);}}>
                   Examples
                 </UnderlineNav.Item>
-                <UnderlineNav.Item aria-label="viewer-about" aria-current={tab === 2 ? "page" : undefined}  icon={() => <EyesIcon colored/>} onSelect={e => {e.preventDefault(); setTab(3);}}>
+                <UnderlineNav.Item aria-label="viewer-about" aria-current={tab === 3 ? "page" : undefined}  icon={() => <EyesIcon colored/>} onSelect={e => {e.preventDefault(); setTab(3);}}>
                   About
                 </UnderlineNav.Item>
               </UnderlineNav>

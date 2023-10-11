@@ -10,6 +10,7 @@ import * as viewerExtension from './jupyterlab/index';
 const ThemeGlobalStyle = createGlobalStyle<any>`
   body {
     background-color: white !important;
+    overflow-y: auto;
   }
 `
 

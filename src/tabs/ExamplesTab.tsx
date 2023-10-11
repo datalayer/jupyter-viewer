@@ -14,8 +14,8 @@ const ExamplesTab = () => {
       .then(response => {
         return response.text();
       })
-      .then(nb => {
-        const nbformat = nb.replaceAll('\\n', '');
+      .then(nbformat => {
+//        const nbformat = nb.replaceAll('\\n', '');
         setNbformat(JSON.parse(nbformat));
       });
   }, [notebookExample]);

@@ -3,8 +3,8 @@ import { ThemeProvider, BaseStyles, Box } from '@primer/react';
 import { UnderlineNav } from '@primer/react/drafts';
 import { JupyterLabAppAdapter } from '@datalayer/jupyter-react';
 import { EyesIcon } from '@datalayer/icons-react';
-import FormTab from './tabs/FormTab';
-import ExamplesTab from './tabs/ExamplesTab';
+import ViewerFormTab from './tabs/ViewerFormTab';
+import ViewerExamplesTab from './tabs/ViewerExamplesTab';
 import AboutTab from './tabs/AboutTab';
 import { requestAPI } from './jupyterlab/handler';
 
@@ -45,8 +45,8 @@ const JupyterViewer = (props: JupyterViewerProps) => {
               </UnderlineNav>
             </Box>
             <Box m={3}>
-              {tab === 1 && <FormTab />}
-              {tab === 2 && <ExamplesTab />}
+              {tab === 1 && <ViewerFormTab />}
+              {tab === 2 && <ViewerExamplesTab />}
               {tab === 3 && <AboutTab version={version} />}
             </Box>
           </Box>

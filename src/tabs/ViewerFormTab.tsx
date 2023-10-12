@@ -6,7 +6,7 @@ import { Jupyter } from '@datalayer/jupyter-react/lib/jupyter/Jupyter';
 import { Viewer } from '@datalayer/jupyter-react/lib/components/viewer/Viewer';
 import { visualisations, NotebookExample } from './notebooks/Examples';
 
-const FormTab = () => {
+const ViewerFormTab = () => {
   const [input, setInput] = useState('');
   const [notebook, setNotebook] = useState<NotebookExample>();
   const [nbformat, setNbformat] = useState<INotebookContent>();
@@ -69,7 +69,7 @@ const FormTab = () => {
         {notebook && nbformat &&
           <>
             <Jupyter startDefaultKernel={false}>
-             <Viewer nbformat={nbformat} outputs={true} />
+             <Viewer nbformat={nbformat} outputs={false} />
             </Jupyter>
           </>
         }
@@ -78,4 +78,4 @@ const FormTab = () => {
   )
 }
 
-export default FormTab;
+export default ViewerFormTab;

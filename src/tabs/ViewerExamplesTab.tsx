@@ -6,7 +6,7 @@ import { Jupyter } from '@datalayer/jupyter-react/lib/jupyter/Jupyter';
 import { Viewer } from '@datalayer/jupyter-react/lib/components/viewer/Viewer';
 import { visualisations, astronomies, dataSciences, MenuLine, NotebookExample } from './notebooks/Examples';
 
-const ExamplesTab = () => {
+const ViewerExamplesTab = () => {
   const [notebookExample, setNotebookExample] = useState<NotebookExample>(visualisations[0]);
   const [nbformat, setNbformat] = useState<INotebookContent>();
   useEffect(() => {
@@ -44,11 +44,11 @@ const ExamplesTab = () => {
               </ActionList>
             </ActionMenu.Overlay>
           </ActionMenu>
-          { nbformat && <Viewer nbformat={nbformat} outputs={true} /> }
+          { nbformat && <Viewer nbformat={nbformat} outputs={false} /> }
         </Jupyter>
       </Box>
     </>
   )
 }
 
-export default ExamplesTab;
+export default ViewerExamplesTab;

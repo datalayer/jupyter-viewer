@@ -60,7 +60,7 @@ const plugin: JupyterFrontEndPlugin<void> = {
       launcher.add({
         command,
         category,
-        rank: 6.8,
+        rank: 6.6,
       });
     }
     console.log('JupyterLab plugin @datalayer/jupyter-viewer is activated!');

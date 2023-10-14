@@ -2,9 +2,10 @@ import { JupyterFrontEnd, JupyterFrontEndPlugin, ILayoutRestorer, JupyterLab } f
 import { MainAreaWidget, ICommandPalette, WidgetTracker } from '@jupyterlab/apputils';
 import { ISettingRegistry } from '@jupyterlab/settingregistry';
 import { ILauncher } from '@jupyterlab/launcher';
-import icon from '@datalayer/icons-react/data2/EyesIconLabIcon';
+import icon from '@datalayer/icons-react/data2/EyesIconJupyterLab';
 import { requestAPI } from './handler';
 import { JupyterViewerWidget } from './widget';
+import viewerPlugin from './viewer/plugin';
 
 import '../../style/index.css';
 
@@ -63,7 +64,6 @@ const plugin: JupyterFrontEndPlugin<void> = {
         rank: 6.6,
       });
     }
-    console.log('JupyterLab plugin @datalayer/jupyter-viewer is activated!');
     if (settingRegistry) {
       settingRegistry
         .load(plugin.id)
@@ -72,7 +72,8 @@ const plugin: JupyterFrontEndPlugin<void> = {
         })
         .catch(reason => {
           console.error('Failed to load settings for @datalayer/jupyter-viewer.', reason);
-        });
+        }
+      );
     }
     requestAPI<any>('config')
       .then(data => {
@@ -82,8 +83,13 @@ const plugin: JupyterFrontEndPlugin<void> = {
         console.error(
           `Error while accessing the jupyter server jupyter_viewer extension.\n${reason}`
         );
-      });
+      }
+    );
+    console.log('JupyterLab plugin @datalayer/jupyter-viewer:plugin is activated.');
   }
 };
 
-export default plugin;
+export default [
+  plugin,
+  viewerPlugin,
+];

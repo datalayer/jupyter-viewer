@@ -3,7 +3,7 @@ import { Pagehead, Label, Text, Link, Box } from '@primer/react';
 import PirateSkull2Icon from '@datalayer/icons-react/eggs/PirateSkull2Icon';
 
 type Props = {
-  version: string,
+  version: string;
 }
 
 const AboutTab = (props: Props): JSX.Element => {

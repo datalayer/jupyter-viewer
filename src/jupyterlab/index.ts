@@ -61,7 +61,7 @@ const plugin: JupyterFrontEndPlugin<void> = {
       launcher.add({
         command,
         category,
-        rank: 6.6,
+        rank: 2.5,
       });
     }
     if (settingRegistry) {

@@ -10,6 +10,12 @@
 
 Datalayer Jupyter Viewer takes over the concept of easy visualisation and brings it to the Web application developers with React.js components.
 
+Jupyter Viewer provides React.js components and a JupyterLab extension to render Notebooks without any Kernel.
+
+It can be seen as the modern version of the existing [NbViewer](https://nbviewer.org) solution.
+
+Developers can create static version of the Notebook. If needed, Users can then connect that static artifcat to a Kernel to make it even more interactive.
+
 This repository packages the [Jupyter UI Viewer](https://jupyter-ui.datalayer.tech/docs/components/viewer) component as a Jupyter Server extension. Install and launch with the following commands (you will need Python installed on your machine).
 
 ```bash

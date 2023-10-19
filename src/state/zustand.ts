@@ -18,10 +18,10 @@ export class Timer {
 export type ZustandState = {
   tab: number;
   getIntTab: () => number;
-  setTab: (tab: number) => void,
+  setTab: (tab: number) => void;
   timer: Timer;
-  increaseTimer: () => void,
-  secondsPassed: number,
+  increaseTimer: () => void;
+  secondsPassed: number;
 }
 
 export const useStore = create<ZustandState>((set, get) => ({

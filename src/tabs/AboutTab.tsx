@@ -8,7 +8,7 @@ type Props = {
 
 const AboutTab = (props: Props): JSX.Element => {
   const { version } = props;
-  const [pirate, setPirate] = useState(false);
+  const [egg, setEgg] = useState(false);
   return (
     <>
       <Pagehead as="h2">🪐 👀 Jupyter Viewer<Label sx={{marginLeft: 1}}>{version}</Label></Pagehead>
@@ -16,10 +16,10 @@ const AboutTab = (props: Props): JSX.Element => {
         <Text>A revisited NbViewer as a modern Web application to view Jupyter notebooks.</Text>
       </Box>
       <Box mt={3}>
-        {!pirate ?
-          <img src="https://assets.datalayer.tech/releases/datalayer-0.2.0-omalley.png" onClick={e => setPirate(true)}/>
+        {!egg ?
+          <img src="https://assets.datalayer.tech/releases/datalayer-0.2.0-omalley.png" onClick={e => setEgg(true)}/>
             :
-          <ECharlesIcon size={300} onClick={e => setPirate(false)}/>
+          <ECharlesIcon size={300} onClick={e => setEgg(false)}/>
         }
       </Box>
       <Box>

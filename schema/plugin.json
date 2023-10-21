@@ -1,7 +1,7 @@
 {
   "jupyter.lab.shortcuts": [],
-  "title": "@datalayer/jupyter-viewer",
-  "description": "@datalayer/jupyter-viewer settings.",
+  "title": "@datalayer/jupyter-viewer:pugin",
+  "description": "@datalayer/jupyter-viewer plugin settings.",
   "type": "object",
   "properties": {},
   "additionalProperties": false

@@ -3,5 +3,5 @@ body {
 }
 
 .dla-Container {
-  overflow-y: visible;
+  overflow-y: auto !important;
 }

@@ -8,7 +8,7 @@
 
 [NbViewer](https://nbviewer.org) is built on top of the [GitHub nbviewer repository](https://github.com/jupyter/nbviewer) and has been an attraction point for many data scientists since years.
 
-Datalayer Jupyter Viewer takes over the concept of easy visualisation and brings it to the Web application developers with React.js components.
+Jupyter Viewer takes over the concept of easy visualisation and brings it to the Web application developers with React.js components.
 
 Jupyter Viewer provides React.js components and a JupyterLab extension to render Notebooks without any Kernel.
 

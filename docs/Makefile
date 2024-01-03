@@ -59,7 +59,7 @@ publish: build ## publish
 			--recursive \
 			--profile datalayer && \
 	  aws cloudfront create-invalidation \
-			--distribution-id xxx	 \
+			--distribution-id E2SY0NZENZ4YQ2 \
 			--paths "/*" \
 			--profile datalayer && \
 	echo open ✨  https://jupyter-viewer.datalayer.tech )

@@ -7,14 +7,6 @@
 > Source code for the [Jupyter Viewer Documentation](https://datalayer.io), built with [Docusaurus](https://docusaurus.io).
 
 ```bash
-# Setup your development environment.
-conda deactivate && \
-  make env-rm # If you want to reset your env.
-make env && \
-  conda activate datalayer
-```
-
-```bash
 # Install the dependencies.
 make install
 ```

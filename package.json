@@ -235,7 +235,8 @@
     },
     "extension": "lib/jupyterlab/index.js",
     "outputDir": "jupyter_viewer/labextension",
-    "schemaDir": "schema"
+    "schemaDir": "schema",
+    "webpackConfig": "./webpack.lab-config.js"
   },
   "jupyter-releaser": {
     "hooks": {

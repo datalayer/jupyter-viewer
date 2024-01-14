@@ -113,7 +113,30 @@ module.exports = {
         test: /\.(png|jpg|jpeg|gif|ttf|woff|woff2|eot)(\?v=[0-9]\.[0-9]\.[0-9])?$/,
         use: [{ loader: 'url-loader', options: { limit: 10000 } }],
       },
-     ]
+      // Ship the JupyterLite service worker.
+      {
+        resourceQuery: /text/,
+        type: 'asset/resource',
+        generator: {
+          filename: '[name][ext]',
+        },
+      },
+      // Rule for pyodide kernel
+      {
+        test: /pypi\/.*/,
+        type: 'asset/resource',
+        generator: {
+          filename: 'pypi/[name][ext][query]',
+        },
+      },
+      {
+        test: /pyodide-kernel-extension\/schema\/.*/,
+        type: 'asset/resource',
+        generator: {
+          filename: 'schema/[name][ext][query]',
+        },
+      }
+    ]
   },
   plugins: [
     !IS_PRODUCTION ?

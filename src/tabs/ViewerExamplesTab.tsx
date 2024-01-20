@@ -1,5 +1,4 @@
-import { useState, useEffect } from 'react';
-import { INotebookContent } from '@jupyterlab/nbformat';
+import { useState } from 'react';
 import { Box, ActionMenu, ActionList } from '@primer/react';
 import { NetworkIcon, JupyterBaseIcon, JupiterIcon, ScientistIcon } from '@datalayer/icons-react';
 import { Jupyter } from '@datalayer/jupyter-react/lib/jupyter/Jupyter';
@@ -8,17 +7,6 @@ import { visualisations, astronomies, dataSciences, MenuLine, NotebookExample } 
 
 const ViewerExamplesTab = () => {
   const [notebookExample, setNotebookExample] = useState<NotebookExample>(visualisations[0]);
-  const [nbformat, setNbformat] = useState<INotebookContent>();
-  useEffect(() => {
-    fetch(notebookExample.url)
-      .then(response => {
-        return response.text();
-      })
-      .then(nbformat => {
-//        const nbformat = nb.replaceAll('\\n', '');
-        setNbformat(JSON.parse(nbformat));
-      });
-  }, [notebookExample]);
   return (
     <>
       <Box m={3}>
@@ -44,7 +32,7 @@ const ViewerExamplesTab = () => {
               </ActionList>
             </ActionMenu.Overlay>
           </ActionMenu>
-          { nbformat && <Viewer nbformat={nbformat} outputs={false} /> }
+          <Viewer nbformatUrl={notebookExample.url} outputs={false} />
         </Jupyter>
       </Box>
     </>

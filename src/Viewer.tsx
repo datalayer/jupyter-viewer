@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { ThemeProvider, BaseStyles, Box } from '@primer/react';
-import { UnderlineNav } from '@primer/react/drafts';
+import { UnderlineNav } from '@primer/react';
 import { JupyterLabAppAdapter } from '@datalayer/jupyter-react';
 import { EyesIcon } from '@datalayer/icons-react';
 import ViewerFormTab from './tabs/ViewerFormTab';

@@ -1,8 +1,15 @@
 {
-  "jupyter.lab.shortcuts": [],
-  "title": "@datalayer/jupyter-viewer:pugin",
-  "description": "@datalayer/jupyter-viewer plugin settings.",
+  "title": "Jupyter Viewer",
+  "description": "Jupyter Viewer settings.",
   "type": "object",
-  "properties": {},
-  "additionalProperties": false
+  "properties": {
+    "showInLauncher": {
+      "title": "Show Jupyter Viewer in the launcher",
+      "description": "Show Jupyter Viewer in the launcher",
+      "default": false,
+      "type": "boolean"
+    }
+  },
+  "additionalProperties": false,
+  "jupyter.lab.shortcuts": []
 }

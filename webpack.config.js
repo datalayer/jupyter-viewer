@@ -4,11 +4,6 @@ const webpack = require("webpack");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 
-const shimJS = path.resolve(__dirname, "src", "emptyshim.js");
-function shim(regExp) {
-  return new webpack.NormalModuleReplacementPlugin(regExp, shimJS);
-}
-
 const IS_PRODUCTION = process.argv.indexOf('--mode=production') > -1;
 const mode = IS_PRODUCTION ? "production" : "development";
 const devtool = IS_PRODUCTION ? false : "inline-cheap-source-map";
@@ -21,7 +16,9 @@ module.exports = {
   devServer: {
     port: 3063,
     client: { overlay: false },
-    historyApiFallback: true,
+    historyApiFallback: {
+      disableDotRule: true,
+    },
     hot: !IS_PRODUCTION,
   },
   watchOptions: {
@@ -152,11 +149,6 @@ module.exports = {
           openAnalyzer: false,
           generateStatsFile: false,
         }),
-    shim(/@fortawesome/),
-    shim(/moment/),
-    shim(/react-jvectormap/),
-    shim(/react-slick/),
-    shim(/react-tagsinput/),
     new HtmlWebpackPlugin({
       template: "./public/index.html",
     }),

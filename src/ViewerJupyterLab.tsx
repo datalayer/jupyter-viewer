@@ -16,10 +16,10 @@ const JupyterLabComponent = () => (
   />
 )
 
-export const ViewerJupyterLab = () => (
+export const JupyterViewerJupyterLab = () => (
   <Jupyter startDefaultKernel={false} disableCssLoading={true} collaborative={true}>
     <JupyterLabComponent/>
   </Jupyter>
 )
 
-export default ViewerJupyterLab;
+export default JupyterViewerJupyterLab;

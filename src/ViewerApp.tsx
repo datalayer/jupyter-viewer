@@ -1,7 +1,7 @@
 /// <reference types="webpack-env" />
 
 import { createRoot } from 'react-dom/client';
-import ViewerJupyterLabHeadless from './ViewerJupyterLabHeadless';
+import ViewerRoutes from './ViewerRoutes';
 
 import "./../style/index.css";
 
@@ -10,10 +10,10 @@ document.body.appendChild(div);
 const root = createRoot(div)
 
 if (module.hot) {
-  module.hot.accept('./ViewerJupyterLabHeadless', () => {
-    const ViewerJupyterLabHeadless = require('./ViewerJupyterLabHeadless').default;
-    root.render(<ViewerJupyterLabHeadless/>);
+  module.hot.accept('./ViewerRoutes', () => {
+    const ViewerRoutes = require('./ViewerRoutes').default;
+    root.render(<ViewerRoutes/>);
   })
 }
 
-root.render(<ViewerJupyterLabHeadless />);
+root.render(<ViewerRoutes />);

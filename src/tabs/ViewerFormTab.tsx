@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { INotebookContent } from '@jupyterlab/nbformat';
-import { Box, Button, FormControl, TextInput } from '@primer/react';
+import { Box, Button, FormControl, TextInput, Spinner } from '@primer/react';
 import { EyesIcon, FourLeafCloverIcon } from '@datalayer/icons-react';
 import { Jupyter } from '@datalayer/jupyter-react/lib/jupyter/Jupyter';
 import { Viewer } from '@datalayer/jupyter-react/lib/components/viewer/Viewer';
@@ -8,22 +8,25 @@ import { visualisations, NotebookExample } from './notebooks/Examples';
 
 const ViewerFormTab = () => {
   const [input, setInput] = useState('');
+  const [loading, setLoading] = useState(false);
   const [notebook, setNotebook] = useState<NotebookExample>();
   const [nbformat, setNbformat] = useState<INotebookContent>();
   const randomNotebook = () => {
     return visualisations[Math.floor(Math.random() * visualisations.length)];
   }
   useEffect(() => {
+    setLoading(true);
+    setNbformat(undefined);
     if (notebook) {
       fetch(notebook.url)
       .then(response => {
         return response.text();
       })
       .then(nb => {
-        const nbformat = nb.replaceAll('\\n', '');
-        setNbformat(JSON.parse(nbformat));
+        setNbformat(JSON.parse(nb));
       });
     }
+    setLoading(false);
   }, [notebook]);
   /*
   const onSelectedChange = (item: any) => {
@@ -66,6 +69,7 @@ const ViewerFormTab = () => {
         <Button leadingVisual={FourLeafCloverIcon} sx={{margin: 1}} onClick={e => setNotebook(randomNotebook())}>I'm Feeling Lucky</Button>
       </Box>
       <Box>
+        {loading && <Spinner/>}
         {notebook && nbformat &&
           <>
             <Jupyter startDefaultKernel={false}>

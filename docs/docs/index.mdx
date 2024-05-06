@@ -21,8 +21,48 @@ pip install jupyter_viewer
 jupyter viewer
 ```
 
-After launching, enjoy the 👀 views on http://localhost:8888/jupyter_viewer
+After launching, enjoy the 👀 views on http://localhost:8888/jupyter_viewer (served by Jupyter).
 
-<div align="center" style={{textAlign: "center"}}>
+<div align="center" style="text-align: center">
   <img alt="Jupyter Viewer" src="https://datalayer-jupyter-examples.s3.amazonaws.com/jupyter-viewer.gif" />
 </div>
+
+You can ask to view a Notebook hosted on GitHub. 
+
+```bash
+# Apply the following pattern:
+# open http://localhost:8888/github/{account}/{repo}/{branch}/{path}
+# For example...
+open http://localhost:8888/github/datalayer/examples/main/pytorch-gpu/pytorch-gpu-example.ipynb
+```
+
+## Develop
+
+```bash
+yarn
+yarn build
+# open http://localhost:3063
+yarn start
+```
+
+Browse http://localhost:3063 (served by Webpack).
+
+```bash
+open http://localhost:3063
+open http://localhost:3063/github/datalayer/examples/main/pytorch-gpu/pytorch-gpu-example.ipynb
+```
+
+Develop the JupyterLab extension.
+
+```bash
+pip install -e .[test]
+jupyter labextension develop . --overwrite
+jupyter labextension list
+jupyter server extension list
+# open http://localhost:8888/api/jupyter/lab?token=60c1661cc408f978c309d04157af55c9588ff9557c9380e4fb50785750703da6
+yarn jupyterlab
+```
+
+## Releases
+
+Jupyter Viewer is released as a python package in [PyPI](https://pypi.org/project/jupyter-viewer).

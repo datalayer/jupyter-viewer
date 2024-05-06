@@ -35,11 +35,11 @@ const JupyterLabHeadless = () => {
   )
 }
 
-export const ViewerJupyterLabHeadless = () => (
+export const JupyterViewerJupyterLabHeadless = () => (
   <Jupyter startDefaultKernel={false} disableCssLoading={true} collaborative={true}>
     <ThemeGlobalStyle />
     <JupyterLabHeadless/>
   </Jupyter>
 )
 
-export default ViewerJupyterLabHeadless;
+export default JupyterViewerJupyterLabHeadless;

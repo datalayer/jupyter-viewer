@@ -4,32 +4,37 @@
 
 # 🪐 👀 Jupyter Viewer
 
-> A revisited NbViewer as a modern Web application to view Jupyter notebooks.
+> A revisited [NbViewer](https://nbviewer.org) as a modern Web application to view Jupyter notebooks.
 
 [NbViewer](https://nbviewer.org) is built on top of the [GitHub nbviewer repository](https://github.com/jupyter/nbviewer) and has been an attraction point for many data scientists since years.
 
-Jupyter Viewer takes over the concept of easy visualisation and brings it to the Web application developers with React.js components.
+Jupyter Viewer takes over the concept of easy visualisation and brings it to the Web application developers with React.js components to render Notebooks without any Kernel. It is also available as JupyterLab extension.
 
-Jupyter Viewer provides React.js components and a JupyterLab extension to render Notebooks without any Kernel.
+If needed, Users can then connect the static view o a Kernel and make it even more interactive.
 
-It can be seen as the modern version of the existing [NbViewer](https://nbviewer.org) solution.
+## Usage
 
-Developers can create static version of the Notebook. If needed, Users can then connect that static artifcat to a Kernel to make it even more interactive.
-
-This repository packages the [Jupyter UI Viewer](https://jupyter-ui.datalayer.tech/docs/components/viewer) component as a Jupyter Server extension. Install and launch with the following commands (you will need Python installed on your machine).
+This repository packages the [Jupyter UI Viewer](https://jupyter-ui.datalayer.tech/docs/components/viewer) component as a JupyterLab extension. Install and launch with the following commands (you will need Python installed on your machine).
 
 ```bash
 pip install jupyter_viewer
-# open http://localhost:8888/jupyter_viewer
-# python -m jupyter_viewer
 jupyter viewer
 ```
 
-After launching, enjoy the 👀 views.
+After launching, enjoy the 👀 views on http://localhost:8888/jupyter_viewer (served by Jupyter).
 
 <div align="center" style="text-align: center">
   <img alt="Jupyter Viewer" src="https://datalayer-jupyter-examples.s3.amazonaws.com/jupyter-viewer.gif" />
 </div>
+
+You can ask to view a Notebook hosted on GitHub. 
+
+```bash
+# Apply the following pattern:
+# open http://localhost:8888/github/{account}/{repo}/{branch}/{path}
+# For example...
+open http://localhost:8888/github/datalayer/examples/main/pytorch-gpu/pytorch-gpu-example.ipynb
+```
 
 ## Develop
 
@@ -37,19 +42,27 @@ After launching, enjoy the 👀 views.
 yarn
 yarn build
 # open http://localhost:3063
-# open http://localhost:8686/api/jupyter/lab?token=60c1661cc408f978c309d04157af55c9588ff9557c9380e4fb50785750703da6
 yarn start
 ```
+
+Browse http://localhost:3063 (served by Webpack).
+
+```bash
+open http://localhost:3063
+open http://localhost:3063/github/datalayer/examples/main/pytorch-gpu/pytorch-gpu-example.ipynb
+```
+
+Develop the JupyterLab extension.
 
 ```bash
 pip install -e .[test]
 jupyter labextension develop . --overwrite
 jupyter labextension list
 jupyter server extension list
-# open http://localhost:8686/api/jupyter/lab?token=60c1661cc408f978c309d04157af55c9588ff9557c9380e4fb50785750703da6
+# open http://localhost:8888/api/jupyter/lab?token=60c1661cc408f978c309d04157af55c9588ff9557c9380e4fb50785750703da6
 yarn jupyterlab
 ```
 
 ## Releases
 
-Jupyter Viewer is released in [PyPI](https://pypi.org/project/jupyter-viewer).
+Jupyter Viewer is released as a python package in [PyPI](https://pypi.org/project/jupyter-viewer).

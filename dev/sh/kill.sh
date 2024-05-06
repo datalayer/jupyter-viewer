@@ -22,6 +22,9 @@ function kill_port() {
 }
 
 kill_port 3208
-kill_port 8686
 kill_port 8080
+kill_port 8686
 kill_port 8888
+
+
+echo "--------------------------------------------------"

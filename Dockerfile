@@ -3,19 +3,8 @@
 
 FROM python:3.11
 
-RUN mkdir /opt/jupyter-viewer
+RUN pip install jupyter-viewer==0.0.8
 
-WORKDIR /opt/jupyter-viewer
+EXPOSE 8888
 
-RUN pip install kazoo
-
-COPY jupyter_viewer /opt/jupyter_viewer
-RUN pip install -e ./jupyter_viewer
-
-# COPY frontplane/dist.html /opt/jupyter-viewer/index.html
-
-WORKDIR /opt/jupyter-viewer/editor
-
-EXPOSE 9300
-
-CMD ["python", "-m", "jupyter_viewer"]
+CMD ["jupyter", "viewer", "--ip", "0.0.0.0", "--IdentityProvider.token", "", "--allow-root", "--no-browser"]

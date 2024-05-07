@@ -4,15 +4,19 @@ const webpack = require("webpack");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 
-const IS_PRODUCTION = process.argv.indexOf('--mode=production') > -1;
-const mode = IS_PRODUCTION ? "production" : "development";
-const devtool = IS_PRODUCTION ? false : "inline-cheap-source-map";
-const minimize = IS_PRODUCTION ? true : false;
-const publicPath = IS_PRODUCTION ? "/static/jupyter_viewer/" : "http://localhost:3063/";
+const IS_WEBPACK_PROD =  process.env.IS_WEBPACK_PROD;
+const IS_PRODUCTION = process.argv.indexOf('--mode=productin') > -1 || IS_WEBPACK_PROD === "true";
+const MODE = IS_PRODUCTION ? "production" : "development";
+const DEVTOOL = IS_PRODUCTION ? false : "inline-cheap-source-map";
+const MINIMIZE = IS_PRODUCTION ? true : false;
+const PUBLIC_PATH = (process.argv.indexOf('--mode=production') > -1) ? 
+    "/static/jupyter_viewer/"
+  : 
+    (IS_WEBPACK_PROD === "true") ? "/" : "http://localhost:3063/";
 
 module.exports = {
   entry: "./src/ViewerApp",
-  mode: mode,
+  mode: MODE,
   devServer: {
     port: 3063,
     client: { overlay: false },
@@ -26,13 +30,13 @@ module.exports = {
     poll: 2000, // Seems to stabilise HMR file change detection
     ignored: "/node_modules/"
   },
-  devtool,
+  devtool: DEVTOOL,
   optimization: {
-    minimize,
+    minimize: MINIMIZE,
 //    usedExports: true,
   },
   output: {
-    publicPath,
+    publicPath: PUBLIC_PATH,
 //    filename: '[name].[contenthash].jupyter-viewer.js',
     filename: '[name].jupyter-viewer.js',
   },

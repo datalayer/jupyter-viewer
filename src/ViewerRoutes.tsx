@@ -8,7 +8,9 @@ const JupyterViewerRoutes = () => {
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<JupyterViewer/>}/>
+          <Route path="/jupyter_viewer*" element={<JupyterViewer/>}/>
           <Route path="/github/:account/:repo/:branch/*" element={<ViewerGitHub/>}/>
+          <Route path="/jupyter_viewer/github/:account/:repo/:branch/*" element={<ViewerGitHub/>}/>
         </Routes>      
       </BrowserRouter>
     </>

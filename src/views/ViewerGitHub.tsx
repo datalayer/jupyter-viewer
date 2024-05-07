@@ -1,7 +1,9 @@
 import { useState, useEffect } from 'react';
 import { useParams, useLocation } from "react-router-dom";
+import { Box, Spinner, Pagehead, Breadcrumbs } from '@primer/react';
+import { MarkGithubIcon } from '@primer/octicons-react';
 import { INotebookContent } from '@jupyterlab/nbformat';
-import { Box, Spinner } from '@primer/react';
+import { JupyterIcon } from '@datalayer/icons-react';
 import { Jupyter } from '@datalayer/jupyter-react/lib/jupyter/Jupyter';
 import { Viewer } from '@datalayer/jupyter-react/lib/components/viewer/Viewer';
 
@@ -14,7 +16,7 @@ const ViewerGitHub = () => {
   useEffect(() => {
     setLoading(true);
     setNbformat(undefined);
-    const notebookPath = location.pathname.replace(`/github/${account}/${repo}/${branch}`, '');
+    const notebookPath = location.pathname.replace("/jupyter_viewer", "").replace(`/github/${account}/${repo}/${branch}`, '');
     setNotebookPath(notebookPath);
     const notebook = `https://raw.githubusercontent.com/${account}/${repo}/${branch}/${notebookPath}`;
     if (notebook) {
@@ -29,21 +31,43 @@ const ViewerGitHub = () => {
     setLoading(false);
   }, []);
   return (
-    <>
-      <Box>
-        GitHub: {account} / {repo} / {branch} {notebookPath}        
-      </Box>
-      <Box>
-        {loading && <Spinner/>}
-        {nbformat &&
-          <>
-            <Jupyter startDefaultKernel={false}>
-             <Viewer nbformat={nbformat} outputs={false} />
-            </Jupyter>
-          </>
-        }
-      </Box>
-    </>
+    <Box ml={3} mr={3}>
+      <Jupyter startDefaultKernel={false}>
+        <Box>
+          <Pagehead>
+            <Box display="flex">
+            <Box mr={3}>
+                <JupyterIcon size={32}/>
+              </Box>
+              <Box mr={3}>
+                <MarkGithubIcon size={32}/>
+              </Box>
+              <Box>
+                <Breadcrumbs>
+                  <Breadcrumbs.Item href={`https://github.com/${account}`} target="_blank" style={{fontSize: 20}}>
+                    {account}
+                  </Breadcrumbs.Item>
+                  <Breadcrumbs.Item href={`https://github.com/${account}/${repo}`} target="_blank" style={{fontSize: 20}}>
+                    {repo}
+                  </Breadcrumbs.Item>
+                  <Breadcrumbs.Item href={`https://github.com/${account}/${repo}/tree/${branch}`} target="_blank" style={{fontSize: 20}}>
+                    {branch}
+                  </Breadcrumbs.Item>
+                  <Breadcrumbs.Item href={`https://github.com/${account}/${repo}/tree/${branch}/${notebookPath}`} target="_blank" style={{fontSize: 20}}>
+                    {notebookPath?.replace('/', '')}
+                  </Breadcrumbs.Item>
+                </Breadcrumbs>
+              </Box>
+            </Box>
+          </Pagehead>
+        </Box>
+        <Box>
+          {loading && <Spinner/>}
+          {nbformat && <Viewer nbformat={nbformat} outputs={false} />
+          }
+        </Box>
+      </Jupyter>
+    </Box>
   )
 }
 

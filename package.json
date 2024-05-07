@@ -1,6 +1,6 @@
 {
   "name": "@datalayer/jupyter-viewer",
-  "version": "0.0.7",
+  "version": "0.0.8",
   "description": "🪐 👀 Jupyter Viewer.",
   "keywords": [
     "jupyter",
@@ -38,6 +38,7 @@
     "build:lib": "tsc",
     "build:prod": "jlpm clean && jlpm build:lib && jlpm build:labextension",
     "build:webpack": "webpack-cli build",
+    "build:webpack:prod": "cross-env IS_WEBPACK_PROD=true webpack-cli build",
     "clean": "jlpm clean:lib",
     "clean:all": "jlpm clean:lib && jlpm clean:labextension && jlpm clean:lintcache",
     "clean:labextension": "rimraf jupyter_viewer/labextension",
@@ -99,6 +100,7 @@
     "@typescript-eslint/eslint-plugin": "^4.8.1",
     "@typescript-eslint/parser": "^4.8.1",
     "babel-loader": "^9.1.2",
+    "cross-env": "^7.0.3",
     "css-loader": "^6.9.1",
     "eslint": "^7.14.0",
     "eslint-config-prettier": "^6.15.0",

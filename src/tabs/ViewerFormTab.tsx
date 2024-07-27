@@ -126,7 +126,7 @@ const ViewerFormTab = () => {
               <div style={{ maxWidth: 'fit-content', marginLeft: 'auto', marginRight: 'auto'}}>
                 <Card>
                   <Card.Header
-                    leadingIcon={JupyterIcon}
+                    leadingVisual={JupyterIcon}
                     title={card.title}
                     /*
                     description={card.title}

@@ -60,8 +60,9 @@ pip install -e .[test]
 jupyter viewer
 ```
 
+Browse the Jupyter Server.
+
 ```bash
-# Browse the Jupyter Server.
 open http://localhost:8888/jupyter_viewer
 open http://localhost:8888/jupyter_viewer/github/datalayer/examples/main/pytorch-gpu/pytorch-gpu-example.ipynb
 ```

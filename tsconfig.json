@@ -1,34 +1,31 @@
 {
   "$schema": "http://json.schemastore.org/tsconfig",
-  "include": [
-    "src/**/*"
-  ],
-  "exclude": [
-    "**/node_modules"
-  ],
+  "include": ["./src/**/*", "./src/**/*.json"],
+  "exclude": ["node_modules", "src/example"],
   "compilerOptions": {
-    "baseUrl": "./",
+    "forceConsistentCasingInFileNames": true,
+    "baseUrl": "/",
+    "rootDir": "./src",
     "allowSyntheticDefaultImports": true,
     "composite": true,
     "declaration": true,
     "esModuleInterop": true,
     "incremental": true,
     "jsx": "react-jsx",
-    "module": "esnext",
+    "jsxImportSource": "react",
+    "module": "ES2022",
     "moduleResolution": "node",
     "noEmitOnError": true,
     "noImplicitAny": true,
     "noUnusedLocals": true,
+    "outDir": "./lib",
     "preserveWatchOutput": true,
     "resolveJsonModule": true,
-    "outDir": "lib",
-    "rootDir": "src",
-    "strict": true,
+    "sourceMap": true,
+    "skipLibCheck": true,
     "strictNullChecks": true,
-    "target": "ES2022",
-    "types": [
-      "node",
-      "jest"
-    ]
+    "target": "ESNext",
+    "types": ["jest", "node"],
+    "lib": ["ESNext", "DOM"]
   }
 }

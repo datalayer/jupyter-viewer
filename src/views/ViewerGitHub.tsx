@@ -3,7 +3,7 @@ import { useParams, useLocation } from "react-router-dom";
 import { Box, Spinner, Pagehead, Breadcrumbs } from '@primer/react';
 import { MarkGithubIcon } from '@primer/octicons-react';
 import { INotebookContent } from '@jupyterlab/nbformat';
-import { JupyterIcon } from '@datalayer/icons-react';
+import { DatalayerGreenIcon } from '@datalayer/icons-react';
 import { Jupyter } from '@datalayer/jupyter-react/lib/jupyter/Jupyter';
 import { Viewer } from '@datalayer/jupyter-react/lib/components/viewer/Viewer';
 
@@ -31,13 +31,13 @@ const ViewerGitHub = () => {
     setLoading(false);
   }, []);
   return (
-    <Box ml={3} mr={3}>
+    <Box m={3}>
       <Jupyter startDefaultKernel={false}>
         <Box>
           <Pagehead>
             <Box display="flex">
             <Box mr={3}>
-                <JupyterIcon size={32}/>
+                <DatalayerGreenIcon size={32} colored/>
               </Box>
               <Box mr={3}>
                 <MarkGithubIcon size={32}/>

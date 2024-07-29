@@ -1,12 +1,53 @@
 import { useState, useEffect } from 'react';
+import { useNavigate } from "react-router-dom";
 import { INotebookContent } from '@jupyterlab/nbformat';
-import { Box, Button, FormControl, TextInput, Spinner } from '@primer/react';
-import { EyesIcon, FourLeafCloverIcon } from '@datalayer/icons-react';
+import { Box, Button, FormControl, TextInput, Spinner, ButtonGroup, Text, Link, Label } from '@primer/react';
+import { Card } from '@datalayer/primer-addons';
+// import { ThreeBarsIcon } from '@primer/octicons-react';
+import { EyesIcon, FourLeafCloverIcon, JupyterIcon } from '@datalayer/icons-react';
 import { Jupyter } from '@datalayer/jupyter-react/lib/jupyter/Jupyter';
 import { Viewer } from '@datalayer/jupyter-react/lib/components/viewer/Viewer';
+import Masonry from 'react-layout-masonry';
 import { visualisations, NotebookExample } from './notebooks/Examples';
 
+type CardContent = {
+  category: string;
+  title: string;
+  description: string;
+  notebookUrl: string;
+  imageUrl: string;
+  viewRoute: string;
+}
+
+const cards: CardContent[] = [
+  {
+    category: 'Language',
+    title: 'IPython Kernel',
+    description: 'IPython provides extensions to the Python programming language that make working interactively convenient and efficient. These extensions are implemented in the IPython Kernel and are available in all of the IPython Frontends (Notebook, Terminal, Console and Qt Console) when running this kernel.',
+    notebookUrl: 'https://github.com/ipython/ipython/blob/6.x/examples/IPython%20Kernel/Index.ipynb',
+    imageUrl: 'https://nbviewer.org/static/img/example-nb/ipython-thumb.png',
+    viewRoute: '/github/ipython/ipython/6.x//examples/IPython%20Kernel/Index.ipynb'
+  },
+  {
+    category: 'Visualization',
+    title: 'XKCD plots in Matplotlib',
+    description: 'This notebook originally appeared as a blog post at Pythonic Perambulations by Jake Vanderplas.',
+    notebookUrl: 'https://github.com/jakevdp/jakevdp.github.io-source/blob/master/content/downloads/notebooks/XKCD_plots.ipynb',
+    imageUrl: 'https://nbviewer.org/static/img/example-nb/XKCD-Matplotlib.png',
+    viewRoute: '/github/jakevdp/jakevdp.github.io-source/master/content/downloads/notebooks/XKCD_plots.ipynb'
+  },
+  {
+    category: 'Book',
+    title: 'Mining the Social Web',
+    description: 'Mining the Social Web (3rd Edition)! This collection of Jupyter Notebooks provides an interactive way to follow along with and explore the numbered examples from the book.',
+    notebookUrl: 'https://github.com/mikhailklassen/Mining-the-Social-Web-3rd-Edition/blob/master/notebooks/Chapter%201%20-%20Mining%20Twitter.ipynb',
+    imageUrl: 'https://nbviewer.org/static/img/example-nb/mining-slice.png',
+    viewRoute: '/github/mikhailklassen/Mining-the-Social-Web-3rd-Edition/master/notebooks/Chapter%201%20-%20Mining%20Twitter.ipynb'
+  },
+]
+
 const ViewerFormTab = () => {
+  const navigate = useNavigate();
   const [input, setInput] = useState('');
   const [loading, setLoading] = useState(false);
   const [notebook, setNotebook] = useState<NotebookExample>();
@@ -73,10 +114,50 @@ const ViewerFormTab = () => {
         {notebook && nbformat &&
           <>
             <Jupyter startDefaultKernel={false}>
-             <Viewer nbformat={nbformat} outputs={false} />
+              <Viewer nbformat={nbformat} outputs={false} />
             </Jupyter>
           </>
         }
+      </Box>
+      <Box mt={10} ml='10%' mr='10%'>
+        <Masonry columns={{ 640: 1, 768: 2, 1024: 3, 1280: 3 }} gap={16}>
+          {cards.map((card) => {
+            return (
+              <div style={{ maxWidth: 'fit-content', marginLeft: 'auto', marginRight: 'auto'}}>
+                <Card>
+                  <Card.Header
+                    leadingVisual={JupyterIcon}
+                    title={card.title}
+                    /*
+                    description={card.title}
+                    action={<IconButton aria-label="Menu" onClick={() => alert("Menu")} icon={ThreeBarsIcon} />}
+                    */
+                  />
+                  <Link href="javascript: return false;" onClick={() => navigate(card.viewRoute)}>
+                    <Card.Image height={200} url={card.imageUrl}/>
+                  </Link>
+                  <Card.Content>
+                    {/*
+                    <Text display="block" fontSize={22}>Paella</Text>
+                    */}
+                    <Text color="fg.muted">
+                      {card.description}
+                    </Text>
+                    <Box mt={3}>
+                      <Label>{card.category}</Label>
+                    </Box>
+                  </Card.Content>
+                  <Card.Actions>
+                    <ButtonGroup>
+                      <Button variant='invisible' onClick={() => navigate(card.viewRoute)}>View</Button>
+                      <Button variant='invisible' onClick={() => window.open(card.notebookUrl)}>Source</Button>
+                    </ButtonGroup>
+                  </Card.Actions>
+                </Card>
+              </div>
+            )
+          })}
+        </Masonry>
       </Box>
     </>
   )

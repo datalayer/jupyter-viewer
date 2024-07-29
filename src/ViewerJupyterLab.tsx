@@ -6,7 +6,7 @@ import * as viewerExtension from './jupyterlab/index';
 
 const JupyterLabComponent = () => (
   <JupyterLabApp
-    extensions={[
+    plugins={[
       lightThemeExtension,
       collaborationExtension,
       viewerExtension,

@@ -23,7 +23,7 @@ const JupyterLabHeadless = () => {
     <>
       {jupyterLabAppAdapter && <Viewer adapter={jupyterLabAppAdapter}/>}
       <JupyterLabApp
-        extensions={[
+        plugins={[
           lightThemeExtension,
           collaborationExtension,
           viewerExtension,

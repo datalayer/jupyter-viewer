@@ -1,8 +1,7 @@
 import { useState, useEffect } from 'react';
-import { ThemeProvider, BaseStyles, Box } from '@primer/react';
-import { UnderlineNav } from '@primer/react';
+import { ThemeProvider, BaseStyles, Box, UnderlineNav, Pagehead, Heading } from '@primer/react';
 import { JupyterLabAppAdapter } from '@datalayer/jupyter-react';
-import { EyesIcon } from '@datalayer/icons-react';
+import { DatalayerGreenIcon, EyesIcon } from '@datalayer/icons-react';
 import ViewerFormTab from './tabs/ViewerFormTab';
 import ViewerExamplesTab from './tabs/ViewerExamplesTab';
 import AboutTab from './tabs/AboutTab';
@@ -27,9 +26,19 @@ const JupyterViewer = (props: JupyterViewerProps) => {
     });
   });
   return (
-    <>
+    <Box m={3}>
       <ThemeProvider>
         <BaseStyles>
+          <Pagehead>
+            <Box display="flex">
+              <Box mr={3}>
+                <DatalayerGreenIcon size={32} colored/>
+              </Box>
+              <Box mr={3}>
+                <Heading>Jupyter Viewer</Heading>
+              </Box>
+            </Box>
+          </Pagehead>
           <Box>
             <Box>
               <UnderlineNav aria-label="viewer">
@@ -52,7 +61,7 @@ const JupyterViewer = (props: JupyterViewerProps) => {
           </Box>
         </BaseStyles>
       </ThemeProvider>
-    </>
+    </Box>
   );
 }
 

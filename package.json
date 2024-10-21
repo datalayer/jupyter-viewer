@@ -68,9 +68,9 @@
     "watch:src": "tsc -w"
   },
   "dependencies": {
-    "@datalayer/icons-react": "^0.3.0",
+    "@datalayer/icons-react": "^0.3.2",
     "@datalayer/jupyter-react": "^0.15.0",
-    "@datalayer/primer-addons": "^0.3.0",
+    "@datalayer/primer-addons": "^0.3.1",
     "@jupyterlab/application": "^4.0.0",
     "@jupyterlab/coreutils": "^6.0.0",
     "@jupyterlab/services": "^7.0.0",
@@ -176,8 +176,8 @@
     "@jupyterlab/theme-light-extension": "4.1.0",
     "@jupyterlab/translation": "4.1.0",
     "@jupyterlab/ui-components": "4.1.0",
-    "@jupyterlite/server": "0.2.2",
-    "@jupyterlite/server-extension": "0.2.2",
+    "@jupyterlite/server": "^0.4.0",
+    "@jupyterlite/server-extension": "^0.4.0",
     "@jupyter/ydoc": "1.1.1",
     "@lumino/algorithm": "2.0.1",
     "@lumino/application": "2.2.0",

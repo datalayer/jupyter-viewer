@@ -6,12 +6,12 @@ type Props = {
   version: string;
 }
 
-export const AboutTab = (props: Props): JSX.Element => {
+export const ViewerAbout = (props: Props): JSX.Element => {
   const { version } = props;
   const [egg, setEgg] = useState(false);
   return (
     <>
-      <Pagehead as="h2">🪐 👀 Jupyter Viewer<Label sx={{marginLeft: 1}}>{version}</Label></Pagehead>
+      <Pagehead as="h2">🪐 👀 Jupyter Viewer{ version && <Label sx={{marginLeft: 1}}>{version}</Label>}</Pagehead>
       <Box>
         <Text>A revisited NbViewer as a modern Web application to view Jupyter notebooks.</Text>
       </Box>
@@ -30,4 +30,4 @@ export const AboutTab = (props: Props): JSX.Element => {
   );
 }
 
-export default AboutTab;
+export default ViewerAbout;

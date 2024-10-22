@@ -4,7 +4,7 @@ import { INotebookContent } from '@jupyterlab/nbformat';
 import { Box, Button, FormControl, TextInput, Spinner, ButtonGroup, Text, Link, Label } from '@primer/react';
 import { Card } from '@datalayer/primer-addons';
 // import { ThreeBarsIcon } from '@primer/octicons-react';
-import { EyesIcon, FourLeafCloverIcon, JupyterIcon } from '@datalayer/icons-react';
+import { FourLeafCloverIcon, JupyterIcon } from '@datalayer/icons-react';
 import { Jupyter } from '@datalayer/jupyter-react/lib/jupyter/Jupyter';
 import { Viewer } from '@datalayer/jupyter-react/lib/components/viewer/Viewer';
 import Masonry from 'react-layout-masonry';
@@ -46,7 +46,7 @@ const cards: CardContent[] = [
   },
 ]
 
-export const ViewerFormTab = () => {
+export const ViewerForm = () => {
   const navigate = useNavigate();
   const [input, setInput] = useState('');
   const [loading, setLoading] = useState(false);
@@ -115,7 +115,7 @@ export const ViewerFormTab = () => {
         </FormControl>
       </Box>
       <Box sx={{display: 'flex', justifyContent: 'center'}}>
-        <Button leadingVisual={EyesIcon} sx={{margin: 1}} onClick={e => setNotebook({ title: '', url: input })} variant="primary">
+        <Button sx={{margin: 1}} onClick={e => setNotebook({ title: '', url: input })} variant="default">
           Go!
         </Button>
         <Button leadingVisual={FourLeafCloverIcon} sx={{margin: 1}} onClick={e => setNotebook(randomNotebook())} variant="default">
@@ -176,4 +176,4 @@ export const ViewerFormTab = () => {
   )
 }
 
-export default ViewerFormTab;
+export default ViewerForm;

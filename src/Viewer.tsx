@@ -3,9 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { ThemeProvider, BaseStyles, Box, UnderlineNav, Pagehead, Heading, Link } from '@primer/react';
 import { JupyterLabAppAdapter } from '@datalayer/jupyter-react';
 import { DatalayerGreenIcon } from '@datalayer/icons-react';
-import { ViewerFormTab } from './tabs/ViewerFormTab';
-import { ViewerExamplesTab } from './tabs/ViewerExamplesTab';
-import { AboutTab } from './tabs/AboutTab';
+import { ViewerForm, ViewerExamples, ViewerAbout } from './views';
 import { requestAPI } from './jupyterlab/handler';
 
 export type JupyterViewerProps = {
@@ -58,9 +56,9 @@ const JupyterViewer = (props: JupyterViewerProps) => {
               </UnderlineNav>
             </Box>
             <Box m={3}>
-              {tab === 1 && <ViewerFormTab />}
-              {tab === 2 && <ViewerExamplesTab />}
-              {tab === 3 && <AboutTab version={version} />}
+              {tab === 1 && <ViewerForm />}
+              {tab === 2 && <ViewerExamples />}
+              {tab === 3 && <ViewerAbout version={version} />}
             </Box>
           </Box>
         </BaseStyles>

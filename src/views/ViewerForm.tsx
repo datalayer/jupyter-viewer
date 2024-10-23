@@ -4,7 +4,7 @@ import { INotebookContent } from '@jupyterlab/nbformat';
 import { Box, Button, FormControl, TextInput, Spinner, ButtonGroup, Text, Link, Label } from '@primer/react';
 import { Card } from '@datalayer/primer-addons';
 // import { ThreeBarsIcon } from '@primer/octicons-react';
-import { EyesIcon, FourLeafCloverIcon, JupyterIcon } from '@datalayer/icons-react';
+import { FourLeafCloverIcon, JupyterIcon } from '@datalayer/icons-react';
 import { Jupyter } from '@datalayer/jupyter-react/lib/jupyter/Jupyter';
 import { Viewer } from '@datalayer/jupyter-react/lib/components/viewer/Viewer';
 import Masonry from 'react-layout-masonry';
@@ -26,7 +26,7 @@ const cards: CardContent[] = [
     description: 'IPython provides extensions to the Python programming language that make working interactively convenient and efficient. These extensions are implemented in the IPython Kernel and are available in all of the IPython Frontends (Notebook, Terminal, Console and Qt Console) when running this kernel.',
     notebookUrl: 'https://github.com/ipython/ipython/blob/6.x/examples/IPython%20Kernel/Index.ipynb',
     imageUrl: 'https://nbviewer.org/static/img/example-nb/ipython-thumb.png',
-    viewRoute: '/github/ipython/ipython/6.x//examples/IPython%20Kernel/Index.ipynb'
+    viewRoute: '/github/ipython/ipython/6.x/examples/IPython%20Kernel/Index.ipynb',
   },
   {
     category: 'Visualization',
@@ -34,7 +34,7 @@ const cards: CardContent[] = [
     description: 'This notebook originally appeared as a blog post at Pythonic Perambulations by Jake Vanderplas.',
     notebookUrl: 'https://github.com/jakevdp/jakevdp.github.io-source/blob/master/content/downloads/notebooks/XKCD_plots.ipynb',
     imageUrl: 'https://nbviewer.org/static/img/example-nb/XKCD-Matplotlib.png',
-    viewRoute: '/github/jakevdp/jakevdp.github.io-source/master/content/downloads/notebooks/XKCD_plots.ipynb'
+    viewRoute: '/github/jakevdp/jakevdp.github.io-source/master/content/downloads/notebooks/XKCD_plots.ipynb',
   },
   {
     category: 'Book',
@@ -42,11 +42,11 @@ const cards: CardContent[] = [
     description: 'Mining the Social Web (3rd Edition)! This collection of Jupyter Notebooks provides an interactive way to follow along with and explore the numbered examples from the book.',
     notebookUrl: 'https://github.com/mikhailklassen/Mining-the-Social-Web-3rd-Edition/blob/master/notebooks/Chapter%201%20-%20Mining%20Twitter.ipynb',
     imageUrl: 'https://nbviewer.org/static/img/example-nb/mining-slice.png',
-    viewRoute: '/github/mikhailklassen/Mining-the-Social-Web-3rd-Edition/master/notebooks/Chapter%201%20-%20Mining%20Twitter.ipynb'
+    viewRoute: '/github/mikhailklassen/Mining-the-Social-Web-3rd-Edition/master/notebooks/Chapter%201%20-%20Mining%20Twitter.ipynb',
   },
 ]
 
-const ViewerFormTab = () => {
+export const ViewerForm = () => {
   const navigate = useNavigate();
   const [input, setInput] = useState('');
   const [loading, setLoading] = useState(false);
@@ -65,6 +65,15 @@ const ViewerFormTab = () => {
       })
       .then(nb => {
         setNbformat(JSON.parse(nb));
+      })
+      .catch(() => {
+        fetch(notebook.url.replace('/blob/', '/ref/heads/'))
+        .then(response => {
+          return response.text();
+        })  
+        .then(nb => {
+          setNbformat(JSON.parse(nb));
+        })
       });
     }
     setLoading(false);
@@ -80,7 +89,7 @@ const ViewerFormTab = () => {
         <FormControl>
           <FormControl.Label id="notebook-location">Enter the location of a Jupyter Notebook to have it rendered here</FormControl.Label>
           <TextInput
-            placeholder='URL | GitHub link | Gist ID'
+            placeholder="URL | GitHub link"
             block
             onChange={e => setInput(e.target.value)}
             onSubmit={e => setNotebook({ title: '', url: input })}
@@ -106,8 +115,12 @@ const ViewerFormTab = () => {
         </FormControl>
       </Box>
       <Box sx={{display: 'flex', justifyContent: 'center'}}>
-        <Button leadingVisual={EyesIcon} sx={{margin: 1}} onClick={e => setNotebook({ title: '', url: input })}>Go!</Button>
-        <Button leadingVisual={FourLeafCloverIcon} sx={{margin: 1}} onClick={e => setNotebook(randomNotebook())}>I'm Feeling Lucky</Button>
+        <Button sx={{margin: 1}} onClick={e => setNotebook({ title: '', url: input })} variant="default">
+          Go!
+        </Button>
+        <Button leadingVisual={FourLeafCloverIcon} sx={{margin: 1}} onClick={e => setNotebook(randomNotebook())} variant="default">
+          I'm Feeling Lucky
+        </Button>
       </Box>
       <Box>
         {loading && <Spinner/>}
@@ -163,4 +176,4 @@ const ViewerFormTab = () => {
   )
 }
 
-export default ViewerFormTab;
+export default ViewerForm;

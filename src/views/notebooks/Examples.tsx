@@ -14,14 +14,14 @@ export const visualisations: NotebookExample[] = [
     title: "Matplotlib",
     url: "https://raw.githubusercontent.com/anissa111/matplotlib-tutorial/main/notebooks/01-basic-matplotlib-tutorial.ipynb",
   },
-  {
+  /*{
     title: "Bicycle Control",
     url: "https://raw.githubusercontent.com/plotly/IPython-plotly/master/notebooks/bicycle_control/bicycle_control.ipynb",
-  },
+  },*/
   {
     title: "IPyWidgets Example",
     url: " https://raw.githubusercontent.com/jupyter-widgets/ipywidgets/main/docs/source/examples/Widget%20Basics.ipynb",
-  }, 
+  },
 ]
 
 export const dataSciences: NotebookExample[] = [
@@ -33,10 +33,10 @@ export const dataSciences: NotebookExample[] = [
     title: "Text Vectorization",
     url: "https://raw.githubusercontent.com/datalayer-courses/python-text-mining-intro/main/4-text-vectorization.ipynb",
   },
-  {
+  /*{
     title: "Survival Analysis",
     url: "https://raw.githubusercontent.com/plotly/IPython-plotly/master/notebooks/survival_analysis/survival_analysis.ipynb",
-  },
+  },*/
 ]
 
 export const astronomies: NotebookExample[] = [
@@ -61,7 +61,7 @@ type MenuLineProps = {
 export const MenuLine = (props: MenuLineProps) => {
   const { notebookExample, setNotebookExample, icon } = props;
   return (
-    <ActionList.Item onSelect={event => setNotebookExample(notebookExample)}>
+    <ActionList.Item onSelect={e => setNotebookExample(notebookExample)}>
     <ActionList.LeadingVisual>
       {icon}
     </ActionList.LeadingVisual>

@@ -1,15 +1,21 @@
 import { useState, useEffect } from 'react';
+import { useNavigate } from "react-router-dom";
 import { useParams, useLocation } from "react-router-dom";
-import { Box, Spinner, Pagehead, Breadcrumbs } from '@primer/react';
+import { Box, Spinner, Pagehead, Breadcrumbs, Link } from '@primer/react';
 import { MarkGithubIcon } from '@primer/octicons-react';
 import { INotebookContent } from '@jupyterlab/nbformat';
 import { DatalayerGreenIcon } from '@datalayer/icons-react';
+import { URLExt } from '@jupyterlab/coreutils';
 import { Jupyter } from '@datalayer/jupyter-react/lib/jupyter/Jupyter';
 import { Viewer } from '@datalayer/jupyter-react/lib/components/viewer/Viewer';
 
-const ViewerGitHub = () => {
+export const ViewerGitHub = () => {
   const { account, repo, branch } = useParams();
+  if (!account || !repo || !branch) {
+    return <></>
+  }
   const location = useLocation();
+  const navigate = useNavigate();
   const [notebookPath, setNotebookPath] = useState<string>();
   const [loading, setLoading] = useState(false);
   const [nbformat, setNbformat] = useState<INotebookContent>();
@@ -18,7 +24,7 @@ const ViewerGitHub = () => {
     setNbformat(undefined);
     const notebookPath = location.pathname.replace("/jupyter_viewer", "").replace(`/github/${account}/${repo}/${branch}`, '');
     setNotebookPath(notebookPath);
-    const notebook = `https://raw.githubusercontent.com/${account}/${repo}/${branch}/${notebookPath}`;
+    const notebook = URLExt.join('https://raw.githubusercontent.com', account, repo, branch, notebookPath);
     if (notebook) {
       fetch(notebook)
       .then(response => {
@@ -36,8 +42,10 @@ const ViewerGitHub = () => {
         <Box>
           <Pagehead>
             <Box display="flex">
-            <Box mr={3}>
-                <DatalayerGreenIcon size={32} colored/>
+              <Box mr={3}>
+                <Link href="#" onClick={e => navigate('/')}>
+                  <DatalayerGreenIcon size={32} colored/>
+                </Link>
               </Box>
               <Box mr={3}>
                 <MarkGithubIcon size={32}/>

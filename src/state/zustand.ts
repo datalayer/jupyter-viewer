@@ -15,7 +15,7 @@ export class Timer {
   }
 }
 
-export type ZustandState = {
+export type JupyterViewerState = {
   tab: number;
   getIntTab: () => number;
   setTab: (tab: number) => void;
@@ -24,7 +24,7 @@ export type ZustandState = {
   secondsPassed: number;
 }
 
-export const useStore = create<ZustandState>((set, get) => ({
+export const useJupyterViewerStore = create<JupyterViewerState>((set, get) => ({
   tab: 0.0,
   getIntTab: () => Math.floor(get().tab),
   setTab: (tab: number) => set((state) => ({ tab })),
@@ -36,4 +36,4 @@ export const useStore = create<ZustandState>((set, get) => ({
   secondsPassed: 0,
 }));
 
-export default useStore;
+export default useJupyterViewerStore;

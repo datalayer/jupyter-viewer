@@ -1,10 +1,9 @@
 import { useState, useEffect } from 'react';
-import { ThemeProvider, BaseStyles, Box, UnderlineNav, Pagehead, Heading } from '@primer/react';
+import { useNavigate } from "react-router-dom";
+import { ThemeProvider, BaseStyles, Box, UnderlineNav, Pagehead, Heading, Link } from '@primer/react';
 import { JupyterLabAppAdapter } from '@datalayer/jupyter-react';
-import { DatalayerGreenIcon, EyesIcon } from '@datalayer/icons-react';
-import ViewerFormTab from './tabs/ViewerFormTab';
-import ViewerExamplesTab from './tabs/ViewerExamplesTab';
-import AboutTab from './tabs/AboutTab';
+import { DatalayerGreenIcon } from '@datalayer/icons-react';
+import { ViewerForm, ViewerExamples, ViewerAbout } from './views';
 import { requestAPI } from './jupyterlab/handler';
 
 export type JupyterViewerProps = {
@@ -14,6 +13,7 @@ export type JupyterViewerProps = {
 const JupyterViewer = (props: JupyterViewerProps) => {
   const [tab, setTab] = useState(1);
   const [version, setVersion] = useState('');
+  const navigate = useNavigate();
   useEffect(() => {
     requestAPI<any>('config')
     .then(data => {
@@ -32,7 +32,9 @@ const JupyterViewer = (props: JupyterViewerProps) => {
           <Pagehead>
             <Box display="flex">
               <Box mr={3}>
-                <DatalayerGreenIcon size={32} colored/>
+                <Link href="#" onClick={e => navigate('/')}>
+                  <DatalayerGreenIcon size={32} colored />
+                </Link>
               </Box>
               <Box mr={3}>
                 <Heading>Jupyter Viewer</Heading>
@@ -48,15 +50,15 @@ const JupyterViewer = (props: JupyterViewerProps) => {
                 <UnderlineNav.Item aria-label="viewer-examples" aria-current={tab === 2 ? "page" : undefined} onSelect={e => {e.preventDefault(); setTab(2);}}>
                   Examples
                 </UnderlineNav.Item>
-                <UnderlineNav.Item aria-label="viewer-about" aria-current={tab === 3 ? "page" : undefined}  icon={() => <EyesIcon colored/>} onSelect={e => {e.preventDefault(); setTab(3);}}>
+                <UnderlineNav.Item aria-label="viewer-about" aria-current={tab === 3 ? "page" : undefined} onSelect={e => {e.preventDefault(); setTab(3);}}>
                   About
                 </UnderlineNav.Item>
               </UnderlineNav>
             </Box>
             <Box m={3}>
-              {tab === 1 && <ViewerFormTab />}
-              {tab === 2 && <ViewerExamplesTab />}
-              {tab === 3 && <AboutTab version={version} />}
+              {tab === 1 && <ViewerForm />}
+              {tab === 2 && <ViewerExamples />}
+              {tab === 3 && <ViewerAbout version={version} />}
             </Box>
           </Box>
         </BaseStyles>

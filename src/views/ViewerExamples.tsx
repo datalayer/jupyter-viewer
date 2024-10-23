@@ -1,42 +1,53 @@
 import { useState } from 'react';
 import { Box, ActionMenu, ActionList } from '@primer/react';
 import { NetworkIcon, JupyterBaseIcon, JupiterIcon, ScientistIcon } from '@datalayer/icons-react';
-import { Jupyter } from '@datalayer/jupyter-react/lib/jupyter/Jupyter';
-import { Viewer } from '@datalayer/jupyter-react/lib/components/viewer/Viewer';
+import { JupyterReactTheme, Viewer } from '@datalayer/jupyter-react';
 import { visualisations, astronomies, dataSciences, MenuLine, NotebookExample } from './notebooks/Examples';
 
-const ViewerExamplesTab = () => {
+export const ViewerExamples = () => {
   const [notebookExample, setNotebookExample] = useState<NotebookExample>(visualisations[0]);
   return (
     <>
       <Box m={3}>
-        <Jupyter startDefaultKernel={false}>
+        <JupyterReactTheme>
           <ActionMenu>
             <ActionMenu.Button leadingVisual={() => <JupyterBaseIcon colored/>}>
               Notebooks
             </ActionMenu.Button>
             <ActionMenu.Overlay>
               <ActionList showDividers>
-                <ActionList.Group title="Visualisations">
+                <ActionList.GroupHeading>
+                  Visualisations
+                </ActionList.GroupHeading>
+                <ActionList.Group>
                   {visualisations.map(visualisation => 
-                    <MenuLine notebookExample={visualisation} icon={<NetworkIcon colored/>} setNotebookExample={setNotebookExample} />)}
+                    <MenuLine notebookExample={visualisation} icon={<NetworkIcon colored/>} setNotebookExample={setNotebookExample} />)
+                  }
                 </ActionList.Group>
-                <ActionList.Group title="Data Science">
+                <ActionList.GroupHeading>
+                  Data Science
+                </ActionList.GroupHeading>
+                <ActionList.Group>
                   {dataSciences.map(dataScience => 
-                    <MenuLine notebookExample={dataScience} icon={<ScientistIcon colored/>} setNotebookExample={setNotebookExample} />)}
+                    <MenuLine notebookExample={dataScience} icon={<ScientistIcon colored/>} setNotebookExample={setNotebookExample} />)
+                  }
                 </ActionList.Group>
-                <ActionList.Group title="Astronomy">
+                <ActionList.GroupHeading>
+                Astronomy
+                </ActionList.GroupHeading>
+                <ActionList.Group>
                   {astronomies.map(astronomy => 
-                    <MenuLine notebookExample={astronomy} icon={<JupiterIcon colored/>} setNotebookExample={setNotebookExample} />)}
+                    <MenuLine notebookExample={astronomy} icon={<JupiterIcon colored/>} setNotebookExample={setNotebookExample} />)
+                  }
                 </ActionList.Group>
               </ActionList>
             </ActionMenu.Overlay>
           </ActionMenu>
           <Viewer nbformatUrl={notebookExample.url} outputs={false} />
-        </Jupyter>
+        </JupyterReactTheme>
       </Box>
     </>
   )
 }
 
-export default ViewerExamplesTab;
+export default ViewerExamples;

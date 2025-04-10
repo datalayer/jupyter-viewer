@@ -44,7 +44,7 @@ Develop the Web application.
 
 ```bash
 yarn
-yarn start
+npm start
 ```
 
 ```bash
@@ -74,7 +74,7 @@ pip install -e .[test]
 jupyter labextension develop . --overwrite
 jupyter labextension list
 jupyter server extension list
-yarn jupyterlab
+npm jupyterlab
 ```
 
 ```bash

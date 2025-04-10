@@ -25,23 +25,23 @@ env-rm: warning ## env-rm
 	micromamba remove -y --name ${ENV_NAME} --all || true
 
 kill:
-	yarn kill
+	npm kill
 
 warning:
 	echo "\x1b[34m\x1b[43mEnsure you have run \x1b[1;37m\x1b[41m conda deactivate \x1b[22m\x1b[34m\x1b[43m before invoking this.\x1b[0m"
 
 clean: ## clean
-	yarn clean
+	npm clean
 
 build: ## build
-	yarn build
+	npm run build
 
 build-webpack: ## build-webpack
-	yarn build:webpack
+	npm run build:webpack
 
 build-webpack-prod: ## build-webpack-prod
 	rm -fr ./dist
-	yarn build:webpack:prod
+	npm run build:webpack:prod
 
 build-prod: ## build-prod
 	git clean -fdx
@@ -98,3 +98,10 @@ publish: build-webpack-prod ## publish
 		--paths "/*" \
 		--profile datalayer && \
 	echo open ✨  https://viewer.datalayer.tech )
+
+clean: ## clean
+	npm run clean
+
+publish-npm: clean build ## publish-npm
+	npm publish
+	echo open https://www.npmjs.com/package/@datalayer/jupyter-viewer

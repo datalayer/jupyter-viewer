@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Pagehead, Label, Text, Box } from '@primer/react';
+import { PageHeader, Label, Text, Box } from '@primer/react';
 import { ECharlesIcon } from '@datalayer/icons-react/eggs';
 
 type Props = {
@@ -11,7 +11,7 @@ export const ViewerAbout = (props: Props): JSX.Element => {
   const [egg, setEgg] = useState(false);
   return (
     <>
-      <Pagehead as="h2">🪐 👀 Jupyter Viewer{ version && <Label sx={{marginLeft: 1}}>{version}</Label>}</Pagehead>
+      <PageHeader as="h2">🪐 👀 Jupyter Viewer{ version && <Label sx={{marginLeft: 1}}>{version}</Label>}</PageHeader>
       <Box>
         <Text>A revisited NbViewer as a modern Web application to view Jupyter notebooks.</Text>
       </Box>

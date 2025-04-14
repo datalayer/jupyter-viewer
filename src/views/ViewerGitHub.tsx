@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useNavigate } from "react-router-dom";
 import { useParams, useLocation } from "react-router-dom";
-import { Box, Spinner, Pagehead, Breadcrumbs, Link } from '@primer/react';
+import { Box, Spinner, PageHeader, Breadcrumbs, Link } from '@primer/react';
 import { MarkGithubIcon } from '@primer/octicons-react';
 import { INotebookContent } from '@jupyterlab/nbformat';
 import { DatalayerGreenIcon } from '@datalayer/icons-react';
@@ -40,7 +40,7 @@ export const ViewerGitHub = () => {
     <Box m={3}>
       <Jupyter startDefaultKernel={false}>
         <Box>
-          <Pagehead>
+          <PageHeader>
             <Box display="flex">
               <Box mr={3}>
                 <Link href="#" onClick={e => navigate('/')}>
@@ -67,7 +67,7 @@ export const ViewerGitHub = () => {
                 </Breadcrumbs>
               </Box>
             </Box>
-          </Pagehead>
+          </PageHeader>
         </Box>
         <Box>
           {loading && <Spinner/>}

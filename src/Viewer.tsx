@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useNavigate } from "react-router-dom";
-import { ThemeProvider, BaseStyles, Box, UnderlineNav, Pagehead, Heading, Link } from '@primer/react';
+import { ThemeProvider, BaseStyles, Box, UnderlineNav, PageHeader, Heading, Link } from '@primer/react';
 import { JupyterLabAppAdapter } from '@datalayer/jupyter-react';
 import { DatalayerGreenIcon } from '@datalayer/icons-react';
 import { ViewerForm, ViewerExamples, ViewerAbout } from './views';
@@ -29,7 +29,7 @@ const JupyterViewer = (props: JupyterViewerProps) => {
     <Box m={3}>
       <ThemeProvider>
         <BaseStyles>
-          <Pagehead>
+          <PageHeader>
             <Box display="flex">
               <Box mr={3}>
                 <Link href="#" onClick={e => navigate('/')}>
@@ -40,7 +40,7 @@ const JupyterViewer = (props: JupyterViewerProps) => {
                 <Heading>Jupyter Viewer</Heading>
               </Box>
             </Box>
-          </Pagehead>
+          </PageHeader>
           <Box>
             <Box>
               <UnderlineNav aria-label="viewer">

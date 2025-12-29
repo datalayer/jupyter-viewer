@@ -3,11 +3,6 @@
  * Distributed under the terms of the Modified BSD License.
  */
 
-/*
- * Copyright (c) 2021-2024 Datalayer, Inc.
- * Distributed under the terms of the Modified BSD License.
- */
-
 import { JupyterReactTheme, JupyterLabApp } from '@datalayer/jupyter-react';
 
 import * as lightThemeExtension from '@jupyterlab/theme-light-extension';

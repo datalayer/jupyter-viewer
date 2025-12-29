@@ -3,11 +3,6 @@
  * Distributed under the terms of the Modified BSD License.
  */
 
-/*
- * Copyright (c) 2021-2024 Datalayer, Inc.
- * Distributed under the terms of the Modified BSD License.
- */
-
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import JupyterViewer from './Viewer';
 import ViewerGitHub from './views/ViewerGitHub';

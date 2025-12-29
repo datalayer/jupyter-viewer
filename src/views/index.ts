@@ -3,11 +3,6 @@
  * Distributed under the terms of the Modified BSD License.
  */
 
-/*
- * Copyright (c) 2021-2024 Datalayer, Inc.
- * Distributed under the terms of the Modified BSD License.
- */
-
 export * from "./ViewerGitHub";
 export * from "./ViewerAbout";
 export * from "./ViewerExamples";

@@ -3,11 +3,6 @@
  * Distributed under the terms of the Modified BSD License.
  */
 
-/*
- * Copyright (c) 2021-2024 Datalayer, Inc.
- * Distributed under the terms of the Modified BSD License.
- */
-
 import { useState } from 'react';
 import { Box, ActionMenu, ActionList } from '@primer/react';
 import { NetworkIcon, JupyterBaseIcon, JupiterIcon, ScientistIcon } from '@datalayer/icons-react';

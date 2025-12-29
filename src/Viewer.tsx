@@ -3,11 +3,6 @@
  * Distributed under the terms of the Modified BSD License.
  */
 
-/*
- * Copyright (c) 2021-2024 Datalayer, Inc.
- * Distributed under the terms of the Modified BSD License.
- */
-
 import { useState, useEffect } from 'react';
 import { useNavigate } from "react-router-dom";
 import { ThemeProvider, BaseStyles, Box, UnderlineNav, PageHeader, Heading, Link } from '@primer/react';

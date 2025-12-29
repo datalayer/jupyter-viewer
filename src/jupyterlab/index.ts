@@ -1,3 +1,8 @@
+/*
+ * Copyright (c) 2021-2024 Datalayer, Inc.
+ * Distributed under the terms of the Modified BSD License.
+ */
+
 import { JupyterFrontEnd, JupyterFrontEndPlugin, ILayoutRestorer, JupyterLab } from '@jupyterlab/application';
 import { MainAreaWidget, ICommandPalette, WidgetTracker } from '@jupyterlab/apputils';
 import { ISettingRegistry } from '@jupyterlab/settingregistry';

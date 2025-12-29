@@ -1,3 +1,8 @@
+/*
+ * Copyright (c) 2021-2024 Datalayer, Inc.
+ * Distributed under the terms of the Modified BSD License.
+ */
+
 import { useState, useEffect } from 'react';
 import { useNavigate } from "react-router-dom";
 import { useParams, useLocation } from "react-router-dom";

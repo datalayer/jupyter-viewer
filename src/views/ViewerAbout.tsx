@@ -1,3 +1,8 @@
+/*
+ * Copyright (c) 2021-2024 Datalayer, Inc.
+ * Distributed under the terms of the Modified BSD License.
+ */
+
 import { useState } from 'react';
 import { PageHeader, Label, Text, Box } from '@primer/react';
 import { ECharlesIcon } from '@datalayer/icons-react/eggs';

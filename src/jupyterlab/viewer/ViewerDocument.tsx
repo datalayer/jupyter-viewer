@@ -1,3 +1,8 @@
+/*
+ * Copyright (c) 2021-2024 Datalayer, Inc.
+ * Distributed under the terms of the Modified BSD License.
+ */
+
 import { ToolbarButton, ReactWidget } from '@jupyterlab/apputils';
 import { ABCWidgetFactory, DocumentRegistry, DocumentWidget } from '@jupyterlab/docregistry';
 import { INotebookModel } from '@jupyterlab/notebook';

@@ -43,8 +43,8 @@ open http://localhost:8888/jupyter_viewer/github/datalayer/examples/main/pytorch
 Develop the Web application.
 
 ```bash
-yarn
-npm start
+npm i
+npm run start
 ```
 
 ```bash

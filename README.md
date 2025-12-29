@@ -74,7 +74,7 @@ pip install -e .[test]
 jupyter labextension develop . --overwrite
 jupyter labextension list
 jupyter server extension list
-npm jupyterlab
+npm run jupyterlab
 ```
 
 ```bash

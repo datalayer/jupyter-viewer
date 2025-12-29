@@ -1,13 +1,25 @@
+/*
+ * Copyright (c) 2021-2025 Datalayer, Inc.
+ * Distributed under the terms of the Modified BSD License.
+ */
+
+/*
+ * Copyright (c) 2021-2024 Datalayer, Inc.
+ * Distributed under the terms of the Modified BSD License.
+ */
+
 import { useState, useEffect } from 'react';
 import { useNavigate } from "react-router-dom";
 import { INotebookContent } from '@jupyterlab/nbformat';
-import { Box, Button, FormControl, TextInput, Spinner, ButtonGroup, Text, Link, Label } from '@primer/react';
+import { Button, FormControl, TextInput, Spinner, ButtonGroup, Text, Link, Label } from '@primer/react';
+import { Box } from '@datalayer/primer-addons';
 import { Card } from '@datalayer/primer-addons';
 // import { ThreeBarsIcon } from '@primer/octicons-react';
 import { FourLeafCloverIcon, JupyterIcon } from '@datalayer/icons-react';
-import { Jupyter } from '@datalayer/jupyter-react/lib/jupyter/Jupyter';
+import { JupyterReactTheme } from '@datalayer/jupyter-react/lib/theme/JupyterReactTheme';
 import { Viewer } from '@datalayer/jupyter-react/lib/components/viewer/Viewer';
 import Masonry from 'react-layout-masonry';
+
 import { visualisations, NotebookExample } from './notebooks/Examples';
 
 type CardContent = {
@@ -126,9 +138,9 @@ export const ViewerForm = () => {
         {loading && <Spinner/>}
         {notebook && nbformat &&
           <>
-            <Jupyter startDefaultKernel={false}>
+            <JupyterReactTheme>
               <Viewer nbformat={nbformat} outputs={false} />
-            </Jupyter>
+            </JupyterReactTheme>
           </>
         }
       </Box>

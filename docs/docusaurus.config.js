@@ -1,3 +1,13 @@
+/*
+ * Copyright (c) 2021-2025 Datalayer, Inc.
+ * Distributed under the terms of the Modified BSD License.
+ */
+
+/*
+ * Copyright (c) 2021-2024 Datalayer, Inc.
+ * Distributed under the terms of the Modified BSD License.
+ */
+
 /** @type {import('@docusaurus/types').DocusaurusConfig} */
 module.exports = {
   title: '🪐 👀 Jupyter Viewer documentation',
@@ -31,19 +41,19 @@ module.exports = {
           href: 'https://www.linkedin.com/company/datalayer',
           position: 'right',
           className: 'header-linkedin-link',
-          'aria-label': 'Linkedin',
+          'aria-label': 'LinkedIn',
         },
         {
-          href: 'https://x.com/DatalayerIO',
+          href: 'https://bsky.app/profile/datalayer.ai',
           position: 'right',
-          className: 'header-x-link',
-          'aria-label': 'X',
+          className: 'header-bluesky-link',
+          'aria-label': 'Bluesky',
         },
         {
           href: 'https://github.com/datalayer/jupyter-viewer',
           position: 'right',
           className: 'header-github-link',
-          'aria-label': 'GitHub repository',
+          'aria-label': 'GitHub',
         },
         {
           href: 'https://datalayer.io',
@@ -73,11 +83,11 @@ module.exports = {
               href: 'https://github.com/datalayer',
             },
             {
-              label: 'X',
-              href: 'https://x.com/datalayerio',
+              label: 'Bluesky',
+              href: 'https://bsky.app/profile/datalayer.ai',
             },
             {
-              label: 'Linkedin',
+              label: 'LinkedIn',
               href: 'https://www.linkedin.com/company/datalayer',
             },
           ],

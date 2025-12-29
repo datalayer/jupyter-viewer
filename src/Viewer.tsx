@@ -1,6 +1,16 @@
+/*
+ * Copyright (c) 2021-2025 Datalayer, Inc.
+ * Distributed under the terms of the Modified BSD License.
+ */
+
+/*
+ * Copyright (c) 2021-2024 Datalayer, Inc.
+ * Distributed under the terms of the Modified BSD License.
+ */
+
 import { useState, useEffect } from 'react';
 import { useNavigate } from "react-router-dom";
-import { ThemeProvider, BaseStyles, Box, UnderlineNav, Pagehead, Heading, Link } from '@primer/react';
+import { ThemeProvider, BaseStyles, Box, UnderlineNav, PageHeader, Heading, Link } from '@primer/react';
 import { JupyterLabAppAdapter } from '@datalayer/jupyter-react';
 import { DatalayerGreenIcon } from '@datalayer/icons-react';
 import { ViewerForm, ViewerExamples, ViewerAbout } from './views';
@@ -10,7 +20,7 @@ export type JupyterViewerProps = {
   adapter?: JupyterLabAppAdapter;
 }
 
-const JupyterViewer = (props: JupyterViewerProps) => {
+export const JupyterViewer = (props: JupyterViewerProps) => {
   const [tab, setTab] = useState(1);
   const [version, setVersion] = useState('');
   const navigate = useNavigate();
@@ -29,7 +39,7 @@ const JupyterViewer = (props: JupyterViewerProps) => {
     <Box m={3}>
       <ThemeProvider>
         <BaseStyles>
-          <Pagehead>
+          <PageHeader>
             <Box display="flex">
               <Box mr={3}>
                 <Link href="#" onClick={e => navigate('/')}>
@@ -40,7 +50,7 @@ const JupyterViewer = (props: JupyterViewerProps) => {
                 <Heading>Jupyter Viewer</Heading>
               </Box>
             </Box>
-          </Pagehead>
+          </PageHeader>
           <Box>
             <Box>
               <UnderlineNav aria-label="viewer">

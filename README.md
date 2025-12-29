@@ -43,8 +43,8 @@ open http://localhost:8888/jupyter_viewer/github/datalayer/examples/main/pytorch
 Develop the Web application.
 
 ```bash
-yarn
-yarn start
+npm i
+npm run start
 ```
 
 ```bash
@@ -74,7 +74,7 @@ pip install -e .[test]
 jupyter labextension develop . --overwrite
 jupyter labextension list
 jupyter server extension list
-yarn jupyterlab
+npm run jupyterlab
 ```
 
 ```bash

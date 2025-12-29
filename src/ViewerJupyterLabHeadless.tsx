@@ -1,7 +1,17 @@
+/*
+ * Copyright (c) 2021-2025 Datalayer, Inc.
+ * Distributed under the terms of the Modified BSD License.
+ */
+
+/*
+ * Copyright (c) 2021-2024 Datalayer, Inc.
+ * Distributed under the terms of the Modified BSD License.
+ */
+
 import { useState } from 'react';
 import { createGlobalStyle } from 'styled-components';
-import { Jupyter, JupyterLabApp, JupyterLabAppAdapter } from '@datalayer/jupyter-react';
-import Viewer from './Viewer';
+import { JupyterReactTheme, JupyterLabApp, JupyterLabAppAdapter } from '@datalayer/jupyter-react';
+import { JupyterViewer } from './Viewer';
 
 import * as lightThemeExtension from '@jupyterlab/theme-light-extension';
 import * as collaborationExtension from '@jupyter/collaboration-extension';
@@ -21,7 +31,7 @@ const JupyterLabHeadless = () => {
   }
   return (
     <>
-      {jupyterLabAppAdapter && <Viewer adapter={jupyterLabAppAdapter}/>}
+      {jupyterLabAppAdapter && <JupyterViewer adapter={jupyterLabAppAdapter}/>}
       <JupyterLabApp
         plugins={[
           lightThemeExtension,
@@ -36,10 +46,10 @@ const JupyterLabHeadless = () => {
 }
 
 export const JupyterViewerJupyterLabHeadless = () => (
-  <Jupyter startDefaultKernel={false} disableCssLoading={true} collaborative={true}>
+  <JupyterReactTheme>
     <ThemeGlobalStyle />
     <JupyterLabHeadless/>
-  </Jupyter>
+  </JupyterReactTheme>
 )
 
 export default JupyterViewerJupyterLabHeadless;

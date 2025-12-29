@@ -1,3 +1,9 @@
+# Copyright (c) 2021-2025 Datalayer, Inc.
+# Distributed under the terms of the Modified BSD License.
+
+# Copyright (c) 2021-2024 Datalayer, Inc.
+# Distributed under the terms of the Modified BSD License.
+
 # Copyright (c) Datalayer, Inc. https://datalayer.io
 # Distributed under the terms of the MIT License.
 
@@ -15,33 +21,33 @@ help: ## display this help
 default: help ## default target is help
 
 env: warning ## env
-	micromamba env create -y -n ${ENV_NAME} -f environment.yml
+	conda env create -y -n ${ENV_NAME} -f environment.yml
 	@exec echo "-------------------------------------------------------"
-	@exec echo "micromamba activate ${ENV_NAME}"
+	@exec echo "conda activate ${ENV_NAME}"
 	@exec echo "-------------------------------------------------------"
 
 env-rm: warning ## env-rm
-	micromamba deactivate && \
-	micromamba remove -y --name ${ENV_NAME} --all || true
+	conda deactivate && \
+	conda remove -y --name ${ENV_NAME} --all || true
 
 kill:
-	yarn kill
+	npm run kill
 
 warning:
 	echo "\x1b[34m\x1b[43mEnsure you have run \x1b[1;37m\x1b[41m conda deactivate \x1b[22m\x1b[34m\x1b[43m before invoking this.\x1b[0m"
 
 clean: ## clean
-	yarn clean
+	npm clean
 
 build: ## build
-	yarn build
+	npm run build
 
 build-webpack: ## build-webpack
-	yarn build:webpack
+	npm run build:webpack
 
 build-webpack-prod: ## build-webpack-prod
 	rm -fr ./dist
-	yarn build:webpack:prod
+	npm run build:webpack:prod
 
 build-prod: ## build-prod
 	git clean -fdx
@@ -98,3 +104,10 @@ publish: build-webpack-prod ## publish
 		--paths "/*" \
 		--profile datalayer && \
 	echo open ✨  https://viewer.datalayer.tech )
+
+clean-npm: ## clean-npm
+	npm run clean
+
+publish-npm: clean-npm build ## publish-npm
+	npm publish
+	echo open https://www.npmjs.com/package/@datalayer/jupyter-viewer

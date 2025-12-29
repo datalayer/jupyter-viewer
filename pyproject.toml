@@ -1,5 +1,11 @@
+# Copyright (c) 2021-2025 Datalayer, Inc.
+# Distributed under the terms of the Modified BSD License.
+
+# Copyright (c) 2021-2024 Datalayer, Inc.
+# Distributed under the terms of the Modified BSD License.
+
 [build-system]
-requires = ["hatchling==1.21.1", "jupyterlab==4.1.0b0", "hatch-nodejs-version"]
+requires = ["hatchling==1.21.1", "jupyterlab==4.1.0", "hatch-nodejs-version"]
 build-backend = "hatchling.build"
 
 [project]
@@ -25,7 +31,7 @@ classifiers = [
 ]
 
 dependencies = [
-    "jupyter_server>=2,<3"
+    "jupyter_server>=2.10,<3"
 ]
 dynamic = ["version", "description", "authors", "urls", "keywords"]
 

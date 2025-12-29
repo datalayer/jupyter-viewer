@@ -1,3 +1,9 @@
+# Copyright (c) 2021-2025 Datalayer, Inc.
+# Distributed under the terms of the Modified BSD License.
+
+# Copyright (c) 2021-2024 Datalayer, Inc.
+# Distributed under the terms of the Modified BSD License.
+
 import glob
 import os
 
@@ -13,11 +19,11 @@ here = os.path.abspath(os.path.dirname(__file__))
 
 def build_javascript():
     check_call(
-        ['yarn', 'install'],
+        ['npm', 'install'],
         cwd=here,
     )
     check_call(
-        ['yarn', 'build:webpack', '--mode=production'],
+        ['npm', 'run', 'build:webpack', '--', '--mode=production'],
         cwd=here,
     )
     for file in glob.glob(r'./dist/*.js'):

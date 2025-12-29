@@ -1,4 +1,14 @@
-import { Jupyter, JupyterLabApp } from '@datalayer/jupyter-react';
+/*
+ * Copyright (c) 2021-2025 Datalayer, Inc.
+ * Distributed under the terms of the Modified BSD License.
+ */
+
+/*
+ * Copyright (c) 2021-2024 Datalayer, Inc.
+ * Distributed under the terms of the Modified BSD License.
+ */
+
+import { JupyterReactTheme, JupyterLabApp } from '@datalayer/jupyter-react';
 
 import * as lightThemeExtension from '@jupyterlab/theme-light-extension';
 import * as collaborationExtension from '@jupyter/collaboration-extension';
@@ -17,9 +27,9 @@ const JupyterLabComponent = () => (
 )
 
 export const JupyterViewerJupyterLab = () => (
-  <Jupyter startDefaultKernel={false} disableCssLoading={true} collaborative={true}>
+  <JupyterReactTheme>
     <JupyterLabComponent/>
-  </Jupyter>
+  </JupyterReactTheme>
 )
 
 export default JupyterViewerJupyterLab;

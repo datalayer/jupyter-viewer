@@ -105,9 +105,9 @@ publish: build-webpack-prod ## publish
 		--profile datalayer && \
 	echo open ✨  https://viewer.datalayer.tech )
 
-clean: ## clean
+clean-npm: ## clean-npm
 	npm run clean
 
-publish-npm: clean build ## publish-npm
+publish-npm: clean-npm build ## publish-npm
 	npm publish
 	echo open https://www.npmjs.com/package/@datalayer/jupyter-viewer

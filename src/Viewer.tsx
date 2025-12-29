@@ -10,7 +10,7 @@ export type JupyterViewerProps = {
   adapter?: JupyterLabAppAdapter;
 }
 
-const JupyterViewer = (props: JupyterViewerProps) => {
+export const JupyterViewer = (props: JupyterViewerProps) => {
   const [tab, setTab] = useState(1);
   const [version, setVersion] = useState('');
   const navigate = useNavigate();

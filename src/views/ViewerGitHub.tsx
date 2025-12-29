@@ -1,12 +1,13 @@
 import { useState, useEffect } from 'react';
 import { useNavigate } from "react-router-dom";
 import { useParams, useLocation } from "react-router-dom";
-import { Box, Spinner, PageHeader, Breadcrumbs, Link } from '@primer/react';
+import { Spinner, PageHeader, Breadcrumbs, Link } from '@primer/react';
+import { Box } from '@datalayer/primer-addons';
 import { MarkGithubIcon } from '@primer/octicons-react';
 import { INotebookContent } from '@jupyterlab/nbformat';
 import { DatalayerGreenIcon } from '@datalayer/icons-react';
 import { URLExt } from '@jupyterlab/coreutils';
-import { Jupyter } from '@datalayer/jupyter-react/lib/jupyter/Jupyter';
+import { JupyterReactTheme } from '@datalayer/jupyter-react/lib/theme/JupyterReactTheme';
 import { Viewer } from '@datalayer/jupyter-react/lib/components/viewer/Viewer';
 
 export const ViewerGitHub = () => {
@@ -38,7 +39,7 @@ export const ViewerGitHub = () => {
   }, []);
   return (
     <Box m={3}>
-      <Jupyter startDefaultKernel={false}>
+      <JupyterReactTheme>
         <Box>
           <PageHeader>
             <Box display="flex">
@@ -74,7 +75,7 @@ export const ViewerGitHub = () => {
           {nbformat && <Viewer nbformat={nbformat} outputs={false} />
           }
         </Box>
-      </Jupyter>
+      </JupyterReactTheme>
     </Box>
   )
 }

@@ -15,14 +15,14 @@ help: ## display this help
 default: help ## default target is help
 
 env: warning ## env
-	micromamba env create -y -n ${ENV_NAME} -f environment.yml
+	conda env create -y -n ${ENV_NAME} -f environment.yml
 	@exec echo "-------------------------------------------------------"
-	@exec echo "micromamba activate ${ENV_NAME}"
+	@exec echo "conda activate ${ENV_NAME}"
 	@exec echo "-------------------------------------------------------"
 
 env-rm: warning ## env-rm
-	micromamba deactivate && \
-	micromamba remove -y --name ${ENV_NAME} --all || true
+	conda deactivate && \
+	conda remove -y --name ${ENV_NAME} --all || true
 
 kill:
 	npm kill

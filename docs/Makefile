@@ -43,7 +43,7 @@ clean: ## clear
 
 install: ## install
 	($(CONDA_ACTIVATE) ${ENV_NAME}; \
-	  npm install )
+	  npm ci )
 
 start: ## start
 	($(CONDA_ACTIVATE) ${ENV_NAME}; \

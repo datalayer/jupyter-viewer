@@ -36,7 +36,7 @@ env:
 
 clean: ## clear
 	($(CONDA_ACTIVATE) ${ENV_NAME}; \
-	  npm clear )
+	  npm run clean )
 
 install: ## install
 	($(CONDA_ACTIVATE) ${ENV_NAME}; \

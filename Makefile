@@ -50,10 +50,6 @@ build-prod: ## build-prod
 	git clean -fdx
 	python -m build
 
-publish-npm: clean build ## publish
-	npm publish
-	echo open https://www.npmjs.com/package/@datalayer/jupyter-viewer
-
 build-docker: ## build the image.
 	docker build \
 	  -t datalayer/jupyter-viewer:0.0.1 \
@@ -108,3 +104,11 @@ clean-npm: ## clean-npm
 publish-npm: clean-npm build ## publish-npm
 	npm publish
 	echo open https://www.npmjs.com/package/@datalayer/jupyter-viewer
+
+publish-pypi: # publish the pypi package
+	git clean -fdx && \
+		python -m build
+	@exec echo
+	@exec echo twine upload ./dist/*-py3-none-any.whl
+	@exec echo
+	@exec echo https://pypi.org/project/jupyter-viewer/#history

@@ -1,17 +1,47 @@
 /*
- * Copyright (c) 2021-2025 Datalayer, Inc.
- * Distributed under the terms of the Modified BSD License.
- */
-
-/*
- * Copyright (c) 2021-2023 Datalayer, Inc.
+ * Copyright (c) 2021-2024 Datalayer, Inc.
  *
- * MIT License
+ * Datalayer License
  */
 
 module.exports = {
+  externals: {
+    'keytar': 'commonjs keytar',
+  },
+  resolve: {
+    fallback: {
+      "fs": false,
+      "path": require.resolve("path-browserify"),
+      "stream": require.resolve("stream-browserify"),
+      "crypto": require.resolve("crypto-browserify"),
+      "buffer": require.resolve("buffer"),
+      "util": require.resolve("util"),
+      "assert": require.resolve("assert"),
+      "url": require.resolve("url"),
+      "querystring": require.resolve("querystring-es3"),
+      "os": require.resolve("os-browserify/browser"),
+      "zlib": require.resolve("browserify-zlib"),
+      "process": require.resolve("process/browser"),
+    },
+  },
+  experiments: {
+    asyncWebAssembly: true,
+    syncWebAssembly: true,
+  },
   module: {
     rules: [
+      {
+        test: /\.jsx$/,
+        loader: 'babel-loader',
+        options: {
+          presets: ['@babel/preset-react'],
+          cacheDirectory: true
+        }
+      },
+      {
+        test: /\.s[ac]ss$/i,
+        use: [ "style-loader", "css-loader", "sass-loader" ],
+      },
       // Rule to deal with the service-worker.ts file
       // It will include the transpiled file as a text file named `[name][ext]`
       // That file is available from the static folder of this extension. That

@@ -12,8 +12,7 @@ from pathlib import Path
 from hatchling.builders.hooks.plugin.interface import BuildHookInterface
 
 
-JLPM = 'npm'
-# JLPM = 'jlpm'
+JLPM = 'jlpm'
 
 
 HERE = os.path.abspath(os.path.dirname(__file__))
@@ -27,22 +26,18 @@ def clean_dist():
         print(f"Cleaned dist folder: {dist_path}")
     
     # Also remove tsconfig.tsbuildinfo if it exists
-    tsbuildinfo_path = os.path.join(HERE, 'tsconfig.tsbuildinfo')
-    if os.path.exists(tsbuildinfo_path):
-        os.remove(tsbuildinfo_path)
-        print(f"Removed tsconfig.tsbuildinfo: {tsbuildinfo_path}")
+    # tsbuildinfo_path = os.path.join(HERE, 'tsconfig.tsbuildinfo')
+    # if os.path.exists(tsbuildinfo_path):
+    #     os.remove(tsbuildinfo_path)
+    #     print(f"Removed tsconfig.tsbuildinfo: {tsbuildinfo_path}")
 
 
 def build_javascript():
-    clean_dist()
-    if not (Path("jupyter_viewer/labextension/static/style.js")).exists():
-        check_call([JLPM, 'install'], cwd=HERE)
-        check_call(
-            [JLPM, 'install'],
-            cwd=HERE,
-        )
+    # clean_dist()
+#    if not (Path("jupyter_viewer/labextension/static/style.js")).exists():
+    check_call([JLPM, 'install'], cwd=HERE)
     check_call(
-        [JLPM, 'run', 'build:webpack:prod'],
+        [JLPM, 'build:webpack:prod'],
         cwd=HERE,
     )
     for file in glob.glob(r'./dist/*.*'):

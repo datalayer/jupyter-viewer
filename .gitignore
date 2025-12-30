@@ -13,8 +13,7 @@ jupyter_viewer/labextension
 # Version file is handled by hatchling
 jupyter_viewer/_version.py
 
-jupyter_viewer/static/*.js
-jupyter_viewer/static/*.css
+jupyter_viewer/static/*.*
 
 coverage
 
@@ -142,3 +141,4 @@ dmypy.json
 !.github
 !.devcontainer
 !.licenserc.yaml
+!jupyter_viewer/static/README.md

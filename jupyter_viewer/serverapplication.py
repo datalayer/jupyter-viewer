@@ -51,12 +51,12 @@ class JupyterViewerExtensionApp(ExtensionAppJinjaMixin, ExtensionApp):
         ))
         httpUrl = self.serverapp.public_url.rstrip('/')
         wsUrl = httpUrl.replace('https://', 'wss://').replace('http://', 'ws://')
-        fullStaticUrl = url_path_join(self.serverapp.base_url, "static", self.name)
+#        fullStaticUrl = url_path_join(self.serverapp.base_url, "static", self.name)
         page_config.setdefault("token", self.serverapp.identity_provider.token)
         page_config.setdefault("baseUrl", self.serverapp.base_url)
         page_config.setdefault("httpUrl", httpUrl)
         page_config.setdefault("wsUrl", wsUrl)
-        page_config.setdefault("fullStaticUrl", fullStaticUrl)
+#        page_config.setdefault("fullStaticUrl", fullStaticUrl)
         self.serverapp.jinja_template_vars.update({
             "jupyter_viewer_version": __version__,
             "page_config": page_config,
@@ -65,9 +65,9 @@ class JupyterViewerExtensionApp(ExtensionAppJinjaMixin, ExtensionApp):
     def initialize_handlers(self):
         self.log.debug("Jupyter Viewer Config {}".format(self.settings['jupyter_viewer_jinja2_env']))
         handlers = [
-            (url_path_join(self.name, "config"), ConfigHandler),
             (r"/jupyter_viewer/(.+)$", IndexHandler),
-            (r"/jupyter_viewer/?", IndexHandler),
+            (r"/jupyter_viewer/?", IndexHandler),            
+            (r"/jupyter_viewer/config/?", ConfigHandler),
             # Serve static files at /static/jupyter_viewer/ to match webpack publicPath
             (
                 url_path_join("static", self.name, "(.*)"),

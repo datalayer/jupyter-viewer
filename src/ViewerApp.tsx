@@ -6,9 +6,12 @@
 /// <reference types="webpack-env" />
 
 import { createRoot } from 'react-dom/client';
+import { setupPrimerPortals } from '@datalayer/primer-addons';
 import { ViewerRoutes } from './ViewerRoutes';
 
 import "./../style/index.css";
+
+setupPrimerPortals();
 
 const div = document.createElement('div');
 document.body.appendChild(div);

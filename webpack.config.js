@@ -11,14 +11,11 @@ const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPl
 
 const IS_WEBPACK_PROD =  process.env.IS_WEBPACK_PROD;
 const USE_JUPYTERLAB_APP = process.env.USE_JUPYTERLAB_APP === "true";
-const IS_PRODUCTION = process.argv.indexOf('--mode=productin') > -1 || IS_WEBPACK_PROD === "true";
+const IS_PRODUCTION = process.argv.indexOf('--mode=production') > -1 || IS_WEBPACK_PROD === "true";
 const MODE = IS_PRODUCTION ? "production" : "development";
 const DEVTOOL = IS_PRODUCTION ? false : "inline-cheap-source-map";
 const MINIMIZE = IS_PRODUCTION ? true : false;
-const PUBLIC_PATH = (process.argv.indexOf('--mode=production') > -1) ? 
-    "/static/jupyter_viewer/"
-  : 
-    (IS_WEBPACK_PROD === "true") ? "/" : "http://localhost:3063/";
+const PUBLIC_PATH = IS_PRODUCTION ? "/static/jupyter_viewer/" : "http://localhost:3063/";
 
 // Switch entry point based on USE_JUPYTERLAB_APP env var
 const ENTRY = USE_JUPYTERLAB_APP ? "./src/ViewerJupyterLabApp" : "./src/ViewerApp";

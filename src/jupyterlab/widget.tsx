@@ -6,7 +6,10 @@
 import { JupyterLab } from '@jupyterlab/application';
 import { ReactWidget } from '@jupyterlab/apputils';
 import { JupyterLabAppAdapter } from '@datalayer/jupyter-react';
+import { setupPrimerPortals } from '@datalayer/primer-addons';
 import { ViewerRoutes } from '../ViewerRoutes';
+
+setupPrimerPortals();
 
 export class JupyterViewerWidget extends ReactWidget {
   private _app: JupyterLab;

@@ -1,6 +1,6 @@
 {
   "name": "@datalayer/jupyter-viewer",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "🪐 👀 Jupyter Viewer.",
   "keywords": [
     "jupyter",
@@ -13,6 +13,14 @@
   "homepage": "https://github.com/datalayer/jupyter-viewer",
   "bugs": {
     "url": "https://github.com/datalayer/jupyter-viewer/issues"
+  },
+  "sideEffects": [
+    "style/*.css",
+    "style/index.js"
+  ],
+  "styleModule": "style/index.js",
+  "publishConfig": {
+    "access": "public"
   },
   "license": "BSD-3-Clause",
   "author": {
@@ -132,14 +140,6 @@
     "webpack-cli": "^4.10.0",
     "webpack-dev-server": "^4.9.3"
   },
-  "sideEffects": [
-    "style/*.css",
-    "style/index.js"
-  ],
-  "styleModule": "style/index.js",
-  "publishConfig": {
-    "access": "public"
-  },
   "jupyterlab": {
     "discovery": {
       "server": {
@@ -147,14 +147,32 @@
           "pip"
         ],
         "base": {
-          "name": "jupyter-viewer"
+          "name": "jupyter_viewer"
         }
       }
     },
     "extension": "lib/jupyterlab/index.js",
     "outputDir": "jupyter_viewer/labextension",
     "schemaDir": "schema",
-    "webpackConfig": "./webpack.lab-config.js"
+    "webpackConfig": "./webpack.lab-config.js",
+    "sharedPackages": {
+      "react": {
+        "bundled": false,
+        "singleton": true
+      },
+      "react-dom": {
+        "bundled": false,
+        "singleton": true
+      },
+      "@datalayer/icons-react": {
+        "bundled": true,
+        "singleton": true
+      },
+      "@datalayer/jupyter-react": {
+        "bundled": true,
+        "singleton": true
+      }
+    }
   },
   "jupyter-releaser": {
     "hooks": {

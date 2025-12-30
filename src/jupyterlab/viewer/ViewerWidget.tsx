@@ -6,7 +6,6 @@
 import { ReactWidget } from '@jupyterlab/apputils';
 import { DocumentRegistry } from '@jupyterlab/docregistry';
 import { INotebookModel } from '@jupyterlab/notebook';
-import { JupyterReactTheme } from '@datalayer/jupyter-react/lib/theme/JupyterReactTheme';
 import { Box } from '@datalayer/primer-addons';
 import { Viewer } from './Viewer';
 
@@ -20,11 +19,11 @@ class ViewerWidget extends ReactWidget {
 
   render() {
     return (
-      <JupyterReactTheme>
+      <>
         <Box m={3}>
           <Viewer context={this._context}/>
         </Box>
-      </JupyterReactTheme>
+      </>
     );
   }
 }

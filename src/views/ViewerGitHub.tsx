@@ -11,7 +11,7 @@ import { Box } from '@datalayer/primer-addons';
 import { JupyterReactTheme } from '@datalayer/jupyter-react/lib/theme/JupyterReactTheme';
 import { MarkGithubIcon } from '@primer/octicons-react';
 import { INotebookContent } from '@jupyterlab/nbformat';
-import { DatalayerGreenIcon } from '@datalayer/icons-react';
+import { EyesIcon } from '@datalayer/icons-react';
 import { URLExt } from '@jupyterlab/coreutils';
 import { Viewer } from '@datalayer/jupyter-react/lib/components/viewer/Viewer';
 
@@ -49,7 +49,7 @@ export const ViewerGitHub = () => {
           <Box display="flex">
             <Box mr={3}>
               <Link href="#" onClick={e => navigate('/')}>
-                <DatalayerGreenIcon size={32} colored/>
+                <EyesIcon size={32} colored/>
               </Link>
             </Box>
             <Box mr={3}>

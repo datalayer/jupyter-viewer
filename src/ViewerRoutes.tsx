@@ -4,19 +4,27 @@
  */
 
 import { MemoryRouter, Routes, Route } from 'react-router-dom';
+import { JupyterReactTheme, JupyterLabAppAdapter } from '@datalayer/jupyter-react';
 import { Viewer } from './views/Viewer';
 import { ViewerGitHub } from './views/ViewerGitHub';
 
-export const ViewerRoutes = () => {
+export type ViewerRoutesProps = {
+  adapter?: JupyterLabAppAdapter;
+}
+
+export const ViewerRoutes = (props: ViewerRoutesProps) => {
+  const { adapter } = props;
   return (
-    <MemoryRouter future={{ v7_startTransition: true }} initialEntries={['/']} >
-      <Routes>
-        <Route path="/" element={<Viewer/>}/>
-        <Route path="/jupyter_viewer*" element={<Viewer/>}/>
-        <Route path="/github/:account/:repo/:branch/*" element={<ViewerGitHub/>}/>
-        <Route path="/jupyter_viewer/github/:account/:repo/:branch/*" element={<ViewerGitHub/>}/>
-      </Routes>      
-    </MemoryRouter>
+    <JupyterReactTheme>
+      <MemoryRouter future={{ v7_startTransition: true }} initialEntries={['/']} >
+        <Routes>
+          <Route path="/" element={<Viewer adapter={adapter}/>}/>
+          <Route path="/jupyter_viewer*" element={<Viewer adapter={adapter}/>}/>
+          <Route path="/github/:account/:repo/:branch/*" element={<ViewerGitHub />}/>
+          <Route path="/jupyter_viewer/github/:account/:repo/:branch/*" element={<ViewerGitHub />}/>
+        </Routes>      
+      </MemoryRouter>
+    </JupyterReactTheme>
   )
 }
 

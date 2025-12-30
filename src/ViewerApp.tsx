@@ -6,7 +6,7 @@
 /// <reference types="webpack-env" />
 
 import { createRoot } from 'react-dom/client';
-import ViewerRoutes from './ViewerRoutes';
+import { ViewerRoutes } from './ViewerRoutes';
 
 import "./../style/index.css";
 

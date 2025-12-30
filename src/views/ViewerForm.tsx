@@ -11,7 +11,6 @@ import { Box } from '@datalayer/primer-addons';
 import { Card } from '@datalayer/primer-addons';
 // import { ThreeBarsIcon } from '@primer/octicons-react';
 import { FourLeafCloverIcon, JupyterIcon } from '@datalayer/icons-react';
-import { JupyterReactTheme } from '@datalayer/jupyter-react/lib/theme/JupyterReactTheme';
 import { Viewer } from '@datalayer/jupyter-react/lib/components/viewer/Viewer';
 import Masonry from 'react-layout-masonry';
 
@@ -133,9 +132,7 @@ export const ViewerForm = () => {
         {loading && <Spinner/>}
         {notebook && nbformat &&
           <>
-            <JupyterReactTheme>
-              <Viewer nbformat={nbformat} outputs={false} />
-            </JupyterReactTheme>
+            <Viewer nbformat={nbformat} outputs={false} />
           </>
         }
       </Box>
@@ -143,7 +140,7 @@ export const ViewerForm = () => {
         <Masonry columns={{ 640: 1, 768: 2, 1024: 3, 1280: 3 }} gap={16}>
           {cards.map((card) => {
             return (
-              <div style={{ maxWidth: 'fit-content', marginLeft: 'auto', marginRight: 'auto'}}>
+              <div key={card.notebookUrl} style={{ maxWidth: 'fit-content', marginLeft: 'auto', marginRight: 'auto'}}>
                 <Card>
                   <Card.Header
                     leadingVisual={JupyterIcon}
@@ -153,7 +150,7 @@ export const ViewerForm = () => {
                     action={<IconButton aria-label="Menu" onClick={() => alert("Menu")} icon={ThreeBarsIcon} />}
                     */
                   />
-                  <Link href="javascript: return false;" onClick={() => navigate(card.viewRoute)}>
+                  <Link href="#" onClick={(e) => {e.preventDefault(); navigate(card.viewRoute);}}>
                     <Card.Image height={200} url={card.imageUrl}/>
                   </Link>
                   <Card.Content>

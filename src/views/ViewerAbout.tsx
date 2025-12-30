@@ -4,7 +4,9 @@
  */
 
 import { useState } from 'react';
-import { PageHeader, Label, Text, Box } from '@primer/react';
+import { PageHeader, Label, Text, Link as PrimerLink } from '@primer/react';
+import { Box } from '@datalayer/primer-addons';
+import { DatalayerIcon } from '@datalayer/icons-react';
 import { ECharlesIcon } from '@datalayer/icons-react/eggs';
 
 type Props = {
@@ -30,6 +32,21 @@ export const ViewerAbout = (props: Props): JSX.Element => {
         ) : (
           <ECharlesIcon size={300} onClick={e => setEgg(false)} />
         )}
+      </Box>
+      <Box mt={6} pt={3} sx={{ borderTop: '1px solid var(--borderColor-default)' }}>
+        <Box display="flex" alignItems="center">
+          <DatalayerIcon size={32} colored style={{ marginRight: '12px' }} />
+          <Box>
+            <Text as="div" sx={{ fontWeight: 600 }}>
+              <PrimerLink href="https://datalayer.ai" target="_blank" rel="noreferrer">
+                Datalayer, Inc.
+              </PrimerLink>
+            </Text>
+            <Text as="div" sx={{ fontSize: '0.875rem', color: 'var(--fgColor-muted)' }}>
+              AI Agents for Data Analysis
+            </Text>
+          </Box>
+        </Box>
       </Box>
     </>
   );

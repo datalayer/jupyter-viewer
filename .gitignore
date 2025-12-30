@@ -18,6 +18,8 @@ jupyter_viewer/static/*.css
 
 coverage
 
+package-lock.json
+
 # Integration tests
 ui-tests/test-results/
 ui-tests/playwright-report/

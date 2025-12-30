@@ -5,12 +5,13 @@
 
 import { useState } from 'react';
 import { createGlobalStyle } from 'styled-components';
-import { JupyterReactTheme, JupyterLabApp, JupyterLabAppAdapter } from '@datalayer/jupyter-react';
-import { JupyterViewer } from './Viewer';
+import { JupyterLabApp, JupyterLabAppAdapter } from '@datalayer/jupyter-react';
 
 import * as lightThemeExtension from '@jupyterlab/theme-light-extension';
-import * as collaborationExtension from '@jupyter/collaboration-extension';
 import * as viewerExtension from './jupyterlab/index';
+// import * as collaborationExtension from '@jupyter/collaboration-extension';
+
+import { Viewer } from './views/Viewer';
 
 const ThemeGlobalStyle = createGlobalStyle<any>`
   body {
@@ -26,12 +27,12 @@ const JupyterLabHeadless = () => {
   }
   return (
     <>
-      {jupyterLabAppAdapter && <JupyterViewer adapter={jupyterLabAppAdapter}/>}
+      {jupyterLabAppAdapter && <Viewer adapter={jupyterLabAppAdapter} />}
       <JupyterLabApp
         plugins={[
           lightThemeExtension,
-          collaborationExtension,
           viewerExtension,
+//          collaborationExtension,
         ]}
         headless={true}
         onJupyterLab={onJupyterLab}
@@ -40,11 +41,11 @@ const JupyterLabHeadless = () => {
   )
 }
 
-export const JupyterViewerJupyterLabHeadless = () => (
-  <JupyterReactTheme>
+export const ViewerJupyterLabHeadless = () => (
+  <>
     <ThemeGlobalStyle />
     <JupyterLabHeadless/>
-  </JupyterReactTheme>
+  </>
 )
 
-export default JupyterViewerJupyterLabHeadless;
+export default ViewerJupyterLabHeadless;

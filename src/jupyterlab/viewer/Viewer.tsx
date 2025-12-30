@@ -12,7 +12,7 @@ type Props = {
   context: DocumentRegistry.IContext<INotebookModel>,
 }
 
-const Viewer = (props: Props) => {
+export const Viewer = (props: Props) => {
   const { context } = props;
   const [model, setModel] = useState(context.model.sharedModel.toJSON());
   context.model.contentChanged.connect((model, _) => {

@@ -8,11 +8,11 @@ import { useNavigate } from "react-router-dom";
 import { useParams, useLocation } from "react-router-dom";
 import { Spinner, PageHeader, Breadcrumbs, Link } from '@primer/react';
 import { Box } from '@datalayer/primer-addons';
+import { JupyterReactTheme } from '@datalayer/jupyter-react/lib/theme/JupyterReactTheme';
 import { MarkGithubIcon } from '@primer/octicons-react';
 import { INotebookContent } from '@jupyterlab/nbformat';
 import { DatalayerGreenIcon } from '@datalayer/icons-react';
 import { URLExt } from '@jupyterlab/coreutils';
-import { JupyterReactTheme } from '@datalayer/jupyter-react/lib/theme/JupyterReactTheme';
 import { Viewer } from '@datalayer/jupyter-react/lib/components/viewer/Viewer';
 
 export const ViewerGitHub = () => {
@@ -45,42 +45,39 @@ export const ViewerGitHub = () => {
   return (
     <Box m={3}>
       <JupyterReactTheme>
-        <Box>
-          <PageHeader>
-            <Box display="flex">
-              <Box mr={3}>
-                <Link href="#" onClick={e => navigate('/')}>
-                  <DatalayerGreenIcon size={32} colored/>
-                </Link>
-              </Box>
-              <Box mr={3}>
-                <MarkGithubIcon size={32}/>
-              </Box>
-              <Box>
-                <Breadcrumbs>
-                  <Breadcrumbs.Item href={`https://github.com/${account}`} target="_blank" style={{fontSize: 20}}>
-                    {account}
-                  </Breadcrumbs.Item>
-                  <Breadcrumbs.Item href={`https://github.com/${account}/${repo}`} target="_blank" style={{fontSize: 20}}>
-                    {repo}
-                  </Breadcrumbs.Item>
-                  <Breadcrumbs.Item href={`https://github.com/${account}/${repo}/tree/${branch}`} target="_blank" style={{fontSize: 20}}>
-                    {branch}
-                  </Breadcrumbs.Item>
-                  <Breadcrumbs.Item href={`https://github.com/${account}/${repo}/tree/${branch}/${notebookPath}`} target="_blank" style={{fontSize: 20}}>
-                    {notebookPath?.replace('/', '')}
-                  </Breadcrumbs.Item>
-                </Breadcrumbs>
-              </Box>
+        <PageHeader>
+          <Box display="flex">
+            <Box mr={3}>
+              <Link href="#" onClick={e => navigate('/')}>
+                <DatalayerGreenIcon size={32} colored/>
+              </Link>
             </Box>
-          </PageHeader>
-        </Box>
-        <Box>
-          {loading && <Spinner/>}
-          {nbformat && <Viewer nbformat={nbformat} outputs={false} />
-          }
-        </Box>
+            <Box mr={3}>
+              <MarkGithubIcon size={32}/>
+            </Box>
+            <Box>
+              <Breadcrumbs>
+                <Breadcrumbs.Item href={`https://github.com/${account}`} target="_blank" style={{fontSize: 20}}>
+                  {account}
+                </Breadcrumbs.Item>
+                <Breadcrumbs.Item href={`https://github.com/${account}/${repo}`} target="_blank" style={{fontSize: 20}}>
+                  {repo}
+                </Breadcrumbs.Item>
+                <Breadcrumbs.Item href={`https://github.com/${account}/${repo}/tree/${branch}`} target="_blank" style={{fontSize: 20}}>
+                  {branch}
+                </Breadcrumbs.Item>
+                <Breadcrumbs.Item href={`https://github.com/${account}/${repo}/tree/${branch}/${notebookPath}`} target="_blank" style={{fontSize: 20}}>
+                  {notebookPath?.replace('/', '')}
+                </Breadcrumbs.Item>
+              </Breadcrumbs>
+            </Box>
+          </Box>
+        </PageHeader>
       </JupyterReactTheme>
+      <Box>
+        {loading && <Spinner/>}
+        {nbformat && <Viewer nbformat={nbformat} outputs={false} />}
+      </Box>
     </Box>
   )
 }

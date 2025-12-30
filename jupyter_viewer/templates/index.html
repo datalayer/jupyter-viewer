@@ -16,18 +16,19 @@
     <script id="datalayer-config-data" type="application/json">
       {
         "jupyterServerUrl": "",
-        "jupyterServerToken": "{{ token }}"
+        "jupyterServerToken": "{{page_config["token"] | e}}"
       }
     </script>
     <script id="jupyter-config-data" type="application/json">
       {
-        "baseUrl": "http://localhost:8888{{ base_url }}",
-        "wsUrl": "ws://localhost:8888{{ base_url }}",
-        "token": "{{ token }}",
+        "baseUrl": "{{page_config["baseUrl"] | e}}",
+        "wsUrl": "{{page_config["wsUrl"] | e}}",
+        "token": "{{page_config["token"] | e}}",
+        "fullStaticUrl": "{{page_config["fullStaticUrl"] | e}}",
         "appUrl": "/lab",
         "themesUrl": "/lab/api/themes",
         "disableRTC": false,
-        "terminalsAvailable": "false",
+        "terminalsAvailable": false,
         "mathjaxUrl": "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js",
         "mathjaxConfig": "TeX-AMS_CHTML-full,Safe"
       }

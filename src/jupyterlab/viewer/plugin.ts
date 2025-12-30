@@ -12,7 +12,7 @@ import { IMainMenu } from '@jupyterlab/mainmenu';
 import { INotebookTracker, NotebookPanel, INotebookModel } from '@jupyterlab/notebook';
 import { IViewerTracker } from './token';
 import { Viewer, ViewerFactory } from './ViewerDocument';
-import ViewerButton from './ViewerButton';
+import { ViewerButton } from './ViewerButton';
 
 export namespace CommandIDs {
   export const viewerRender = 'notebook:render-with-viewer';

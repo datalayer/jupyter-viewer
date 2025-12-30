@@ -16,7 +16,7 @@ c.ServerApp.log_level = 'INFO'
 #################
 
 c.ServerApp.ip = '0.0.0.0'
-c.ServerApp.port = 8888
+c.ServerApp.port = 8686
 c.ServerApp.port_retries = 0
 
 #################
@@ -87,7 +87,7 @@ c.ServerApp.preferred_dir = content_dir
 # URLs
 #################
 
-c.ServerApp.base_url = '/'
+c.ServerApp.base_url = '/api/jupyter-server'
 c.ServerApp.default_url = '/lab'
 
 #################

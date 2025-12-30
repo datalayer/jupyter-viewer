@@ -6,8 +6,9 @@
 import { ReactWidget } from '@jupyterlab/apputils';
 import { DocumentRegistry } from '@jupyterlab/docregistry';
 import { INotebookModel } from '@jupyterlab/notebook';
-import { ThemeProvider, BaseStyles, Box } from '@primer/react';
-import Viewer from './Viewer';
+import { JupyterReactTheme } from '@datalayer/jupyter-react/lib/theme/JupyterReactTheme';
+import { Box } from '@datalayer/primer-addons';
+import { Viewer } from './Viewer';
 
 class ViewerWidget extends ReactWidget {
   private _context: DocumentRegistry.IContext<INotebookModel>
@@ -19,13 +20,11 @@ class ViewerWidget extends ReactWidget {
 
   render() {
     return (
-      <ThemeProvider>
-        <BaseStyles>
-          <Box m={3}>
-            <Viewer context={this._context}/>
-          </Box>
-        </BaseStyles>
-      </ThemeProvider>
+      <JupyterReactTheme>
+        <Box m={3}>
+          <Viewer context={this._context}/>
+        </Box>
+      </JupyterReactTheme>
     );
   }
 }

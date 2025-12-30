@@ -6,7 +6,7 @@
 import { JupyterLab } from '@jupyterlab/application';
 import { ReactWidget } from '@jupyterlab/apputils';
 import { JupyterLabAppAdapter } from '@datalayer/jupyter-react';
-import Viewer from '../Viewer';
+import { Viewer } from '../views/Viewer';
 
 export class JupyterViewerWidget extends ReactWidget {
   private _app: JupyterLab;

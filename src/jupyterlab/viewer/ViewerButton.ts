@@ -11,7 +11,7 @@ import { NotebookPanel, INotebookModel } from '@jupyterlab/notebook';
 import icon from '@datalayer/icons-react/data2/EyesIconJupyterLab';
 import { CommandIDs } from './plugin';
 
-class ViewerButton implements DocumentRegistry.IWidgetExtension<NotebookPanel, INotebookModel> {
+export class ViewerButton implements DocumentRegistry.IWidgetExtension<NotebookPanel, INotebookModel> {
   private _commands: CommandRegistry;
 
   constructor(commands: CommandRegistry) {

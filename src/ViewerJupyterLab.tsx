@@ -3,28 +3,28 @@
  * Distributed under the terms of the Modified BSD License.
  */
 
-import { JupyterReactTheme, JupyterLabApp } from '@datalayer/jupyter-react';
+import { JupyterLabApp } from '@datalayer/jupyter-react';
 
 import * as lightThemeExtension from '@jupyterlab/theme-light-extension';
-import * as collaborationExtension from '@jupyter/collaboration-extension';
 import * as viewerExtension from './jupyterlab/index';
+// import * as collaborationExtension from '@jupyter/collaboration-extension';
 
-const JupyterLabComponent = () => (
+const JupyterLabAppComponent = () => (
   <JupyterLabApp
     plugins={[
       lightThemeExtension,
-      collaborationExtension,
       viewerExtension,
+//      collaborationExtension,
     ]}
     position="absolute"
-    height="100vh"
+    height="100vh"    
   />
 )
 
-export const JupyterViewerJupyterLab = () => (
-  <JupyterReactTheme>
-    <JupyterLabComponent/>
-  </JupyterReactTheme>
+export const ViewerJupyterLab = () => (
+  <>
+    <JupyterLabAppComponent/>
+  </>
 )
 
-export default JupyterViewerJupyterLab;
+export default ViewerJupyterLab;

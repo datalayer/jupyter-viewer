@@ -45,9 +45,6 @@ Develop the Web application.
 ```bash
 npm i
 npm run start
-```
-
-```bash
 # Browse the Webpack server.
 open http://localhost:3063
 open http://localhost:3063/github/datalayer/examples/main/pytorch-gpu/pytorch-gpu-example.ipynb
@@ -58,11 +55,7 @@ Develop the Jupyter Server
 ```bash
 pip install -e .[test]
 jupyter viewer
-```
-
-Browse the Jupyter Server.
-
-```bash
+# Browse the Jupyter Server.
 open http://localhost:8888/jupyter_viewer
 open http://localhost:8888/jupyter_viewer/github/datalayer/examples/main/pytorch-gpu/pytorch-gpu-example.ipynb
 ```
@@ -75,10 +68,9 @@ jupyter labextension develop . --overwrite
 jupyter labextension list
 jupyter server extension list
 npm run jupyterlab
-```
-
-```bash
-# Browse JupyterLab.
+# Browse the React JupyterLab App
+open http://localhost:3063
+# Browse the JupyterLab App
 open http://localhost:8888
 ```
 

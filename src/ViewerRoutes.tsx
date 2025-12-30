@@ -3,23 +3,21 @@
  * Distributed under the terms of the Modified BSD License.
  */
 
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import JupyterViewer from './Viewer';
-import ViewerGitHub from './views/ViewerGitHub';
+import { MemoryRouter, Routes, Route } from 'react-router-dom';
+import { Viewer } from './views/Viewer';
+import { ViewerGitHub } from './views/ViewerGitHub';
 
-const JupyterViewerRoutes = () => {
+export const ViewerRoutes = () => {
   return (
-    <>
-      <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<JupyterViewer/>}/>
-          <Route path="/jupyter_viewer*" element={<JupyterViewer/>}/>
-          <Route path="/github/:account/:repo/:branch/*" element={<ViewerGitHub/>}/>
-          <Route path="/jupyter_viewer/github/:account/:repo/:branch/*" element={<ViewerGitHub/>}/>
-        </Routes>      
-      </BrowserRouter>
-    </>
+    <MemoryRouter future={{ v7_startTransition: true }} initialEntries={['/']} >
+      <Routes>
+        <Route path="/" element={<Viewer/>}/>
+        <Route path="/jupyter_viewer*" element={<Viewer/>}/>
+        <Route path="/github/:account/:repo/:branch/*" element={<ViewerGitHub/>}/>
+        <Route path="/jupyter_viewer/github/:account/:repo/:branch/*" element={<ViewerGitHub/>}/>
+      </Routes>      
+    </MemoryRouter>
   )
 }
 
-export default JupyterViewerRoutes;
+export default ViewerRoutes;

@@ -13,9 +13,10 @@ def _jupyter_server_extension_points() -> List[Dict[str, Any]]:
         "app": JupyterViewerExtensionApp,
     }]
 
-
+"""
 def _jupyter_labextension_paths() -> List[Dict[str, str]]:
     return [{
         "src": "labextension",
         "dest": "@datalayer/jupyter-viewer"
     }]
+"""

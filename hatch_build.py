@@ -16,11 +16,11 @@ here = os.path.abspath(os.path.dirname(__file__))
 
 def build_javascript():
     check_call(
-        ['npm', 'install'],
+        ['jlpm', 'install'],
         cwd=here,
     )
     check_call(
-        ['npm', 'run', 'build:webpack', '--', '--mode=production'],
+        ['jlpm', 'run', 'build:webpack', '--', '--mode=production'],
         cwd=here,
     )
     for file in glob.glob(r'./dist/*.js'):

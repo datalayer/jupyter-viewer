@@ -8,12 +8,12 @@ import { useNavigate } from "react-router-dom";
 import { useParams, useLocation } from "react-router-dom";
 import { Spinner, PageHeader, Breadcrumbs, Link } from '@primer/react';
 import { Box } from '@datalayer/primer-addons';
-import { JupyterReactTheme } from '@datalayer/jupyter-react/lib/theme/JupyterReactTheme';
+import { JupyterReactTheme } from '@datalayer/jupyter-react/theme';
 import { MarkGithubIcon } from '@primer/octicons-react';
 import { INotebookContent } from '@jupyterlab/nbformat';
 import { EyesIcon } from '@datalayer/icons-react';
 import { URLExt } from '@jupyterlab/coreutils';
-import { Viewer } from '@datalayer/jupyter-react/lib/components/viewer/Viewer';
+import { Viewer } from '@datalayer/jupyter-react/viewer';
 
 export const ViewerGitHub = () => {
   const { account, repo, branch } = useParams();

@@ -11,7 +11,7 @@ import { Box } from '@datalayer/primer-addons';
 import { Card } from '@datalayer/primer-addons';
 // import { ThreeBarsIcon } from '@primer/octicons-react';
 import { FourLeafCloverIcon, JupyterIcon } from '@datalayer/icons-react';
-import { Viewer } from '@datalayer/jupyter-react/lib/components/viewer/Viewer';
+import { Viewer } from '@datalayer/jupyter-react/viewer';
 import Masonry from 'react-layout-masonry';
 
 import { visualisations, NotebookExample } from './notebooks/Examples';

@@ -6,7 +6,7 @@
 import { useState } from 'react';
 import { DocumentRegistry } from '@jupyterlab/docregistry';
 import { INotebookModel } from '@jupyterlab/notebook';
-import { Viewer as JupyterReactViewer} from '@datalayer/jupyter-react/lib/components/viewer/Viewer';
+import { Viewer as JupyterReactViewer } from '@datalayer/jupyter-react/viewer';
 
 type Props = {
   context: DocumentRegistry.IContext<INotebookModel>,

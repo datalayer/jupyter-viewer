@@ -41,8 +41,8 @@
   },
   "scripts": {
     "build": "jlpm build:lib && jlpm build:labextension:dev",
-    "build:labextension": "jupyter labextension build .",
-    "build:labextension:dev": "jupyter labextension build --development True .",
+    "build:labextension": "jupyter-builder build .",
+    "build:labextension:dev": "jupyter-builder build --development True .",
     "build:lib": "tsc",
     "build:prod": "jlpm clean && jlpm build:lib && jlpm build:labextension",
     "build:webpack": "webpack-cli build",
@@ -72,7 +72,7 @@
     "test": "jest --coverage",
     "typedoc": "typedoc ./src",
     "watch": "run-p watch:src watch:labextension",
-    "watch:labextension": "jupyter labextension watch .",
+    "watch:labextension": "jupyter-builder watch .",
     "watch:src": "tsc -w"
   },
   "dependencies": {
@@ -101,7 +101,7 @@
     "@babel/preset-env": "^7.20.2",
     "@babel/preset-react": "^7.18.6",
     "@babel/preset-typescript": "^7.21.0",
-    "@jupyterlab/builder": "^4.0.0",
+    "@jupyter/builder": "^1.1.1",
     "@jupyterlab/launcher": "^4.0.0",
     "@jupyterlab/testutils": "^4.0.0",
     "@types/jest": "^29.4.0",
@@ -191,7 +191,7 @@
   "jupyter-releaser": {
     "hooks": {
       "before-build-npm": [
-        "python -m pip install jupyterlab==4.1.0",
+        "python -m pip install 'jupyterlab>=4.0.0,<5'",
         "jlpm"
       ],
       "before-build-python": [

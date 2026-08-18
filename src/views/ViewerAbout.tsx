@@ -7,7 +7,7 @@ import { useState } from 'react';
 import { PageHeader, Label, Text, Link as PrimerLink } from '@primer/react';
 import { Box } from '@datalayer/primer-addons';
 import { DatalayerIcon } from '@datalayer/icons-react';
-import { ECharlesIcon } from '@datalayer/icons-react/eggs';
+import { SkubbleIcon } from '@datalayer/icons-react/eggs';
 
 type Props = {
   version: string;
@@ -30,7 +30,7 @@ export const ViewerAbout = (props: Props): JSX.Element => {
             style={{ width: 300 }}
           />
         ) : (
-          <ECharlesIcon size={300} onClick={e => setEgg(false)} />
+          <SkubbleIcon size={300} onClick={e => setEgg(false)} />
         )}
       </Box>
       <Box mt={6} pt={3} sx={{ borderTop: '1px solid var(--borderColor-default)' }}>

@@ -3,6 +3,7 @@
  * Distributed under the terms of the Modified BSD License.
  */
 
+import type { JSX } from 'react';
 import { useState } from 'react';
 import { PageHeader, Label, Text, Link as PrimerLink } from '@primer/react';
 import { Box } from '@datalayer/primer-addons';

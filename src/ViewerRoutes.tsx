@@ -19,7 +19,7 @@ export const ViewerRoutes = (props: ViewerRoutesProps) => {
     <JupyterReactTheme>
       <ThemeProvider>
         <BaseStyles>
-          <MemoryRouter future={{ v7_startTransition: true }} initialEntries={['/']} >
+          <MemoryRouter initialEntries={['/']} >
             <Routes>
               <Route path="/" element={<Viewer adapter={adapter}/>}/>
               <Route path="/jupyter_viewer*" element={<Viewer adapter={adapter}/>}/>

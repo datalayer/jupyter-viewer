@@ -3,6 +3,7 @@
  * Distributed under the terms of the Modified BSD License.
  */
 
+import type { JSX } from 'react';
 import { JupyterLab } from '@jupyterlab/application';
 import { ReactWidget } from '@jupyterlab/apputils';
 import { JupyterLabAppAdapter } from '@datalayer/jupyter-react';
